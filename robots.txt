@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fredrickmwendwa.vercel.app/sitemap.xml
