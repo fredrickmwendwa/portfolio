@@ -1,0 +1,105 @@
+/* ==========================================================================
+   SKILLS PAGE
+   ========================================================================== */
+
+.skills-intro {
+  padding: 168px 0 var(--space-6);
+  border-bottom: var(--border-hairline);
+}
+
+.skills-intro h1 {
+  max-width: 18ch;
+}
+
+.skills-intro .hero-sub {
+  margin-top: var(--space-3);
+  max-width: 52ch;
+}
+
+.skills-columns {
+  padding: var(--space-7) 0;
+  display: grid;
+  gap: 1px;
+  background: var(--color-border);
+  border: var(--border-hairline);
+}
+
+@media (min-width: 768px) {
+  .skills-columns { grid-template-columns: 1fr 1fr; }
+}
+
+.skills-col {
+  background: var(--color-bg-primary);
+  padding: var(--space-5);
+}
+
+@media (min-width: 1024px) {
+  .skills-col { padding: var(--space-6); }
+}
+
+.skills-col-head {
+  margin-bottom: var(--space-4);
+}
+
+.skill-item {
+  padding: var(--space-3) 0;
+  border-top: var(--border-hairline);
+  display: grid;
+  gap: var(--space-1);
+}
+
+.skill-item:last-child {
+  padding-bottom: 0;
+}
+
+.skill-item-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.skill-item-head h3 {
+  font-size: var(--fs-md);
+}
+
+.skill-item p {
+  color: var(--color-text-secondary);
+  font-size: var(--fs-sm);
+  max-width: 44ch;
+}
+
+/* ---- Currently learning row ---- */
+
+.skills-learning {
+  padding: var(--space-6) 0;
+}
+
+.skills-learning-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+.skills-learning-tag {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  padding: 0.5em 0.9em;
+  border: 1px dashed var(--color-border);
+  color: var(--color-text-secondary);
+}
+
+/* ---- Tools row ---- */
+
+.skills-tools {
+  padding: var(--space-6) 0;
+  border-top: var(--border-hairline);
+}
+
+.skills-tools-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}

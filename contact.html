@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Fredrick Mwendwa</title>
+  <meta name="description" content="Get in touch with Fredrick Mwendwa for backend development or brand design work.">
+  <meta property="og:title" content="Contact — Fredrick Mwendwa">
+  <meta property="og:description" content="Get in touch for backend development or brand design work.">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/contact.css">
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- ===== Header / Navigation ===== -->
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="site-logo">Fredrick<span>.</span>M</a>
+
+      <nav class="main-nav" aria-label="Primary">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="work.html">Work</a></li>
+          <li><a href="design.html">Design</a></li>
+          <li><a href="skills.html">Skills</a></li>
+          <li><a href="contact.html" class="btn btn-secondary" aria-current="page">Contact</a></li>
+        </ul>
+      </nav>
+
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== Mobile Navigation ===== -->
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile">
+    <ul>
+      <li><span class="nav-index">01</span><a href="index.html">Home</a></li>
+      <li><span class="nav-index">02</span><a href="about.html">About</a></li>
+      <li><span class="nav-index">03</span><a href="work.html">Work</a></li>
+      <li><span class="nav-index">04</span><a href="design.html">Design</a></li>
+      <li><span class="nav-index">05</span><a href="skills.html">Skills</a></li>
+      <li><span class="nav-index">06</span><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main id="main">
+
+    <!-- ===== Hero ===== -->
+    <section class="contact-hero container">
+      <span class="eyebrow eyebrow--accent">Contact</span>
+      <h1>Tell me what you're building.</h1>
+      <p class="hero-sub">
+        Whether it's a system that needs building or a brand that needs
+        sorting out, I'd rather hear the actual problem than a formal brief.
+        Email is the fastest way to reach me.
+      </p>
+    </section>
+
+    <!-- ===== Body ===== -->
+    <section class="contact-body">
+      <div class="container contact-grid">
+
+        <!-- Direct contact -->
+        <div class="contact-direct" data-reveal>
+          <div class="contact-block">
+            <span class="eyebrow">Email</span>
+            <a href="mailto:fredrickmwendwa77@gmail.com" class="contact-email link-underline">fredrickmwendwa77@gmail.com</a>
+          </div>
+
+          <div class="contact-block">
+            <span class="eyebrow">Elsewhere</span>
+            <div class="contact-socials">
+              <a href="[ADD GITHUB URL]" class="link-underline">GitHub — [add username]</a>
+              <a href="[ADD LINKEDIN URL]" class="link-underline">LinkedIn — [add profile]</a>
+              <a href="[ADD INSTAGRAM URL]" class="link-underline">Instagram — [add handle, design work]</a>
+            </div>
+          </div>
+
+          <div class="contact-block">
+            <span class="eyebrow">Location</span>
+            <p class="text-secondary" style="font-size: var(--fs-sm);">Kiambu, Kenya — open to remote work</p>
+          </div>
+
+          <div class="availability-card">
+            <span class="availability-dot" aria-hidden="true"></span>
+            <div>
+              <strong>Availability</strong>
+              <p>Currently a final-year student, taking on freelance backend and design projects alongside coursework. [ADD CURRENT AVAILABILITY DETAIL — e.g. hours per week, earliest start date.]</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <div data-reveal>
+          <span class="eyebrow eyebrow--accent" style="display:block; margin-bottom: var(--space-3);">Or send a message directly</span>
+
+          <form class="contact-form" id="contact-form" novalidate>
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" autocomplete="name" required>
+              <span class="form-error" id="name-error" role="alert"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" autocomplete="email" required>
+              <span class="form-error" id="email-error" role="alert"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="message">What are you building?</label>
+              <textarea id="message" name="message" required></textarea>
+              <span class="form-error" id="message-error" role="alert"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="align-self: flex-start;">
+              Send message <span class="btn-arrow">→</span>
+            </button>
+
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+
+            <p class="form-note">
+              [DEVELOPER NOTE: this form validates input in the browser but
+              doesn't send email yet. Connect it to a form backend (Formspree,
+              Getform, a serverless function, etc.) before relying on it —
+              see js/contact-form.js for where to wire that in. Until then,
+              visitors should use the email link above.]
+            </p>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-cta">
+        <h2>Building systems.<br>Designing signal.</h2>
+      </div>
+
+      <div class="footer-grid">
+        <div class="footer-col">
+          <span class="eyebrow">Navigate</span>
+          <div class="footer-links">
+            <a href="about.html">About</a>
+            <a href="work.html">Work</a>
+            <a href="design.html">Design</a>
+            <a href="skills.html">Skills</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <span class="eyebrow">Connect</span>
+          <div class="footer-links">
+            <a href="mailto:[ADD EMAIL ADDRESS]">Email</a>
+            <a href="[ADD GITHUB URL]">GitHub</a>
+            <a href="[ADD LINKEDIN URL]">LinkedIn</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <span class="eyebrow">Contact</span>
+          <div class="footer-links">
+            <a href="contact.html">Send a message →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-meta">
+        <span>© <span id="footer-year"></span> Fredrick Mwendwa</span>
+        <span id="footer-clock">Nairobi</span>
+        <span>Kiambu, Kenya</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/navigation.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/contact-form.js"></script>
+  <script>
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
