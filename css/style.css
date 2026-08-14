@@ -1,7 +1,7 @@
 /* ==========================================================================
-   FREDRICK MWENDWA — PORTFOLIO
+   FREDRICK MWENDWA - PORTFOLIO
    Design system: "Blueprint & Signal"
-   Cool paper background, ink-black type, two functional accents —
+   Cool paper background, ink-black type, two functional accents -
    signal blue for systems/engineering, ochre for design/brand work.
    ========================================================================== */
 
@@ -22,11 +22,14 @@
   --color-accent-hover: #1E37B8;
   --color-accent-soft: #DCE2FA;
 
-  --color-signal: #D9861F;          /* design / brand work */
+  --color-signal: #D9861F;          /* design / brand work - dark backgrounds & decorative use only */
+  --color-signal-text: #94590C;     /* darker ochre - WCAG AA safe for text on light backgrounds */
   --color-signal-soft: #F6E4C8;
 
   --color-border: #CBCEC3;
   --color-border-strong: #14171C;
+
+  --color-header-bg: rgba(240, 241, 236, 0.88);
 
   /* ---- Typography ---- */
   --font-display: 'Fraunces', Georgia, serif;
@@ -42,15 +45,17 @@
   --fs-2xl: clamp(2.5rem, 1.8rem + 3vw, 4rem);
   --fs-3xl: clamp(2.75rem, 1.6rem + 5vw, 5.5rem);
 
-  /* ---- Spacing (8px base) ---- */
+  /* ---- Spacing (8px base). space-1..4 stay fixed (fine at any size);
+     space-5..8 scale fluidly so section rhythm doesn't jump at breakpoints
+     and mobile isn't left with desktop-sized empty space. ---- */
   --space-1: 0.5rem;
   --space-2: 1rem;
   --space-3: 1.5rem;
   --space-4: 2rem;
-  --space-5: 3rem;
-  --space-6: 4rem;
-  --space-7: 6rem;
-  --space-8: 9rem;
+  --space-5: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --space-6: clamp(2.5rem, 1.8rem + 3.5vw, 4rem);
+  --space-7: clamp(3rem, 1.8rem + 6vw, 6rem);
+  --space-8: clamp(3.5rem, 1.5rem + 10vw, 9rem);
 
   /* ---- Layout ---- */
   --container-max: 1200px;
@@ -192,7 +197,30 @@ button {
 }
 
 .eyebrow--accent { color: var(--color-accent); }
-.eyebrow--signal { color: var(--color-signal); }
+.eyebrow--signal { color: var(--color-signal-text); }
+.split-panel--dark .eyebrow--signal { color: var(--color-signal); }
+
+/* ==========================================================================
+   Shared hero subhead + closing CTA band
+   Used on every page (not just Home) - must live in the shared stylesheet.
+   ========================================================================== */
+
+.hero-sub {
+  margin-top: var(--space-3);
+  max-width: 50ch;
+  font-size: var(--fs-md);
+  color: var(--color-text-secondary);
+}
+
+.cta-band {
+  padding: var(--space-7) 0;
+  text-align: left;
+}
+
+.cta-band h2 {
+  max-width: 18ch;
+  margin-bottom: var(--space-4);
+}
 
 h1, .h1 {
   font-family: var(--font-display);
@@ -225,7 +253,7 @@ h3, .h3 {
   color: var(--color-text-secondary);
 }
 
-/* underline-draw link — the single consistent hover interaction */
+/* underline-draw link - the single consistent hover interaction */
 .link-underline {
   position: relative;
   display: inline-block;
@@ -245,7 +273,7 @@ h3, .h3 {
 }
 
 /* ==========================================================================
-   Registration marks — signature motif
+   Registration marks - signature motif
    Thin crosshair/bracket marks borrowed from technical drawings & print
    crop marks. Used sparingly: section corners, image frames on hover.
    ========================================================================== */
@@ -349,6 +377,14 @@ h3, .h3 {
   color: var(--color-accent);
 }
 
+.availability-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-signal);
+  flex-shrink: 0;
+}
+
 /* ==========================================================================
    Site header / navigation
    ========================================================================== */
@@ -356,8 +392,10 @@ h3, .h3 {
 .site-header {
   position: fixed;
   top: 0; left: 0; right: 0;
-  z-index: 100;
-  background: rgba(240, 241, 236, 0.88);
+  /* Higher than .mobile-nav so the toggle button (and its X state) always
+     stays visible and clickable above the open mobile menu overlay. */
+  z-index: 200;
+  background: var(--color-header-bg);
   backdrop-filter: blur(8px);
   border-bottom: var(--border-hairline);
 }
@@ -366,17 +404,34 @@ h3, .h3 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 76px;
+  height: 72px;
+}
+
+@media (min-width: 480px) {
+  .site-header .container { height: 76px; }
 }
 
 .site-logo {
   font-family: var(--font-display);
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-weight: 600;
   letter-spacing: -0.01em;
+  flex-shrink: 0;
 }
 .site-logo span {
   color: var(--color-accent);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.nav-cluster {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
 }
 
 .main-nav {
@@ -385,37 +440,61 @@ h3, .h3 {
 
 .main-nav ul {
   display: flex;
-  gap: var(--space-5);
+  gap: var(--space-4);
   align-items: center;
 }
 
 .main-nav a:not(.btn) {
+  position: relative;
   font-family: var(--font-mono);
   font-size: var(--fs-sm);
+  letter-spacing: 0.02em;
   color: var(--color-text-secondary);
+  padding: 0.4em 0.1em;
   transition: color var(--duration-fast) var(--ease-standard);
 }
+.main-nav a:not(.btn)::after {
+  content: '';
+  position: absolute;
+  left: 0.1em; right: 0.1em;
+  bottom: 0;
+  height: 1px;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--duration-base) var(--ease-standard);
+}
 .main-nav a:not(.btn):hover,
-.main-nav a:not(.btn):focus-visible,
+.main-nav a:not(.btn):focus-visible {
+  color: var(--color-text-primary);
+}
+.main-nav a:not(.btn):hover::after,
+.main-nav a:not(.btn):focus-visible::after,
+.main-nav a[aria-current="page"]::after {
+  transform: scaleX(1);
+}
 .main-nav a[aria-current="page"] {
   color: var(--color-text-primary);
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .main-nav { display: block; }
   .nav-toggle { display: none; }
 }
 
-/* Mobile nav toggle */
+/* Mobile nav toggle (hamburger / close) */
 .nav-toggle {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 5px;
-  padding: var(--space-1);
-  z-index: 110;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
 }
 .nav-toggle span {
-  width: 22px;
+  width: 20px;
   height: 1.5px;
   background: var(--color-text-primary);
   transition: transform var(--duration-fast) var(--ease-standard),
@@ -435,11 +514,11 @@ h3, .h3 {
   position: fixed;
   inset: 0;
   background: var(--color-bg-inverse);
-  z-index: 105;
+  z-index: 150;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: var(--space-4) var(--gutter);
+  padding: calc(72px + var(--space-4)) var(--gutter) var(--space-4);
   opacity: 0;
   visibility: hidden;
   transition: opacity var(--duration-base) var(--ease-standard);
@@ -448,6 +527,7 @@ h3, .h3 {
   opacity: 1;
   visibility: visible;
 }
+
 .mobile-nav ul {
   display: flex;
   flex-direction: column;
@@ -482,11 +562,14 @@ h3, .h3 {
 }
 .mobile-nav a {
   font-family: var(--font-display);
-  font-size: var(--fs-xl);
+  font-size: clamp(1.75rem, 1.3rem + 4vw, 2.5rem);
   color: var(--color-text-inverse);
 }
+.mobile-nav a.btn {
+  font-family: var(--font-mono);
+}
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .mobile-nav { display: none; }
 }
 
@@ -566,13 +649,34 @@ h3, .h3 {
 
 .footer-meta {
   margin-top: var(--space-6);
+  padding-top: var(--space-4);
+  border-top: 1px solid rgba(240,241,236,0.15);
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
   font-family: var(--font-mono);
   font-size: var(--fs-xs);
   color: var(--color-text-inverse-secondary);
 }
 
-#footer-clock {
-  color: var(--color-signal);
+.back-to-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  color: var(--color-text-inverse-secondary);
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+.back-to-top:hover,
+.back-to-top:focus-visible {
+  color: var(--color-text-inverse);
+}
+.back-to-top svg {
+  width: 12px;
+  height: 12px;
+  transition: transform var(--duration-fast) var(--ease-standard);
+}
+.back-to-top:hover svg {
+  transform: translateY(-2px);
 }

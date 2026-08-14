@@ -3,11 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+
   <title>Contact - Fredrick Mwendwa</title>
   <meta name="description" content="Get in touch with Fredrick Mwendwa for backend development or brand design work.">
-  <meta property="og:title" content="Contact — Fredrick Mwendwa">
+  <!-- Placeholder domain below - update to the real deployed domain -->
+  <link rel="canonical" href="https://fredrickmwendwa.com/contact.html">
+
+  <link rel="icon" href="assets/icons/favicon.ico" sizes="any">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+
+  <meta property="og:title" content="Contact - Fredrick Mwendwa">
   <meta property="og:description" content="Get in touch for backend development or brand design work.">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://fredrickmwendwa.com/contact.html">
+  <meta property="og:image" content="https://fredrickmwendwa.com/assets/og/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Fredrick Mwendwa">
+  <meta property="og:locale" content="en_KE">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contact - Fredrick Mwendwa">
+  <meta name="twitter:description" content="Get in touch for backend development or brand design work.">
+  <meta name="twitter:image" content="https://fredrickmwendwa.com/assets/og/og-image.png">
+
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/contact.css">
 </head>
@@ -20,6 +43,7 @@
     <div class="container">
       <a href="index.html" class="site-logo">Fredrick<span>.</span>M</a>
 
+      <div class="nav-cluster">
       <nav class="main-nav" aria-label="Primary">
         <ul>
           <li><a href="index.html">Home</a></li>
@@ -31,9 +55,12 @@
         </ul>
       </nav>
 
-      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
-        <span></span><span></span><span></span>
-      </button>
+      <div class="header-actions">
+        <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      </div>
     </div>
   </header>
 
@@ -49,7 +76,7 @@
     </ul>
   </nav>
 
-  <main id="main">
+  <main id="main" tabindex="-1">
 
     <!-- ===== Hero ===== -->
     <section class="contact-hero container">
@@ -76,22 +103,22 @@
           <div class="contact-block">
             <span class="eyebrow">Elsewhere</span>
             <div class="contact-socials">
-              <a href="[ADD GITHUB URL]" class="link-underline">GitHub — [add username]</a>
-              <a href="[ADD LINKEDIN URL]" class="link-underline">LinkedIn — [add profile]</a>
-              <a href="[ADD INSTAGRAM URL]" class="link-underline">Instagram — [add handle, design work]</a>
+              <a href="https://github.com/fredrickmwendwa" class="link-underline">GitHub - fredrickmwendwa</a>
+              <a href="https://www.linkedin.com/in/fredrick-mwendwa" class="link-underline">LinkedIn - fredrick-mwendwa</a>
+              <a href="https://www.instagram.com/_fredrick.m_/" class="link-underline">Instagram - _fredrick.m_</a>
             </div>
           </div>
 
           <div class="contact-block">
             <span class="eyebrow">Location</span>
-            <p class="text-secondary" style="font-size: var(--fs-sm);">Kiambu, Kenya — open to remote work</p>
+            <p class="text-secondary" style="font-size: var(--fs-sm);">Nairobi, Kenya - open to remote work</p>
           </div>
 
           <div class="availability-card">
             <span class="availability-dot" aria-hidden="true"></span>
             <div>
               <strong>Availability</strong>
-              <p>Currently a final-year student, taking on freelance backend and design projects alongside coursework. [ADD CURRENT AVAILABILITY DETAIL — e.g. hours per week, earliest start date.]</p>
+              <p>Currently a final-year student, taking on freelance backend and design projects alongside coursework. [ADD CURRENT AVAILABILITY DETAIL - e.g. hours per week, earliest start date.]</p>
             </div>
           </div>
         </div>
@@ -128,7 +155,7 @@
             <p class="form-note">
               [DEVELOPER NOTE: this form validates input in the browser but
               doesn't send email yet. Connect it to a form backend (Formspree,
-              Getform, a serverless function, etc.) before relying on it —
+              Getform, a serverless function, etc.) before relying on it -
               see js/contact-form.js for where to wire that in. Until then,
               visitors should use the email link above.]
             </p>
@@ -151,6 +178,7 @@
         <div class="footer-col">
           <span class="eyebrow">Navigate</span>
           <div class="footer-links">
+            <a href="index.html">Home</a>
             <a href="about.html">About</a>
             <a href="work.html">Work</a>
             <a href="design.html">Design</a>
@@ -160,23 +188,22 @@
         <div class="footer-col">
           <span class="eyebrow">Connect</span>
           <div class="footer-links">
-            <a href="mailto:[ADD EMAIL ADDRESS]">Email</a>
-            <a href="[ADD GITHUB URL]">GitHub</a>
-            <a href="[ADD LINKEDIN URL]">LinkedIn</a>
+            <a href="mailto:fredrickmwendwa77@gmail.com">Email</a>
+            <a href="https://github.com/fredrickmwendwa">GitHub</a>
+            <a href="https://www.linkedin.com/in/fredrick-mwendwa">LinkedIn</a>
           </div>
         </div>
         <div class="footer-col">
           <span class="eyebrow">Contact</span>
           <div class="footer-links">
-            <a href="contact.html">Send a message →</a>
+            <a href="contact.html">Send a message -&gt;</a>
           </div>
         </div>
       </div>
 
       <div class="footer-meta">
-        <span>© <span id="footer-year"></span> Fredrick Mwendwa</span>
-        <span id="footer-clock">Nairobi</span>
-        <span>Kiambu, Kenya</span>
+        <span>&copy; <span id="footer-year"></span> Fredrick Mwendwa. All rights reserved.</span>
+        <a href="#main" class="back-to-top">Back to top <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></a>
       </div>
     </div>
   </footer>
@@ -185,8 +212,5 @@
   <script src="js/animations.js"></script>
   <script src="js/main.js"></script>
   <script src="js/contact-form.js"></script>
-  <script>
-    document.getElementById('footer-year').textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>

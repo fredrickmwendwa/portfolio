@@ -3,19 +3,23 @@
    ========================================================================== */
 
 .hero {
-  padding: 168px 0 var(--space-7);
+  padding: calc(72px + var(--space-5)) 0 var(--space-7);
   position: relative;
+}
+
+@media (min-width: 480px) {
+  .hero { padding-top: calc(76px + var(--space-6)); }
 }
 
 .hero-grid {
   display: grid;
-  gap: var(--space-5);
+  gap: var(--space-6);
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 880px) {
   .hero-grid {
-    grid-template-columns: 1.4fr 1fr;
-    align-items: end;
+    grid-template-columns: 1.3fr 1fr;
+    align-items: center;
     gap: var(--space-6);
   }
 }
@@ -29,36 +33,54 @@
 }
 
 .hero h1 .accent { color: var(--color-accent); }
-.hero h1 .signal { color: var(--color-signal); }
-
-.hero-sub {
-  margin-top: var(--space-4);
-  max-width: 46ch;
-  font-size: var(--fs-md);
-  color: var(--color-text-secondary);
-}
-
-.hero-meta {
-  font-family: var(--font-mono);
-  font-size: var(--fs-xs);
-  color: var(--color-text-secondary);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-1);
-  padding-left: var(--space-3);
-  border-left: 1px solid var(--color-border-strong);
-}
-
-.hero-meta strong {
-  color: var(--color-text-primary);
-  font-weight: 500;
-}
 
 .hero-actions {
   margin-top: var(--space-5);
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
+}
+
+.hero-status {
+  margin-top: var(--space-4);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--color-text-secondary);
+}
+
+/* ---- Hero signature panel ---- */
+
+.hero-panel {
+  position: relative;
+  background: var(--color-bg-secondary);
+  border: var(--border-hairline);
+  padding: var(--space-4);
+}
+
+.hero-panel::before,
+.hero-panel::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 1px solid var(--color-accent);
+}
+.hero-panel::before {
+  top: -1px; left: -1px;
+  border-right: none; border-bottom: none;
+}
+.hero-panel::after {
+  bottom: -1px; right: -1px;
+  border-left: none; border-top: none;
+}
+
+.hero-panel-svg {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* ---- Intro strip ---- */
@@ -138,14 +160,6 @@
   filter: sepia(12%) saturate(85%) hue-rotate(-6deg);
 }
 
-.work-media-placeholder {
-  font-family: var(--font-mono);
-  font-size: var(--fs-xs);
-  color: var(--color-text-secondary);
-  text-align: center;
-  padding: var(--space-3);
-}
-
 .work-tags {
   display: flex;
   gap: var(--space-1);
@@ -221,12 +235,5 @@
 
 /* ---- Closing CTA ---- */
 
-.cta-band {
-  padding: var(--space-7) 0;
-  text-align: left;
-}
+/* .cta-band styles now live in the shared style.css - used on every page, not just Home */
 
-.cta-band h2 {
-  max-width: 18ch;
-  margin-bottom: var(--space-4);
-}

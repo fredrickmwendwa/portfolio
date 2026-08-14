@@ -1,312 +1,299 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      Fredrick Mwendwa - Backend Developer &amp; Brand Designer
-    </title>
-    <meta
-      name="description"
-      content="Fredrick Mwendwa builds backend systems with Python and Django, and designs brand identities and social content."
-    />
-    <meta
-      property="og:title"
-      content="Fredrick Mwendwa - Backend Developer & Brand Designer"
-    />
-    <meta
-      property="og:description"
-      content="Systems built with Python and Django. Brands built with typography and color. One person, both disciplines."
-    />
-    <meta property="og:type" content="website" />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/home.css" />
-  </head>
-  <body>
-    <a href="#main" class="skip-link">Skip to content</a>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
 
-    <!-- ===== Header / Navigation ===== -->
-    <header class="site-header">
-      <div class="container">
-        <a href="index.html" class="site-logo">Fredrick<span>.</span>M</a>
+  <title>Fredrick Mwendwa - Backend Developer &amp; Brand Designer, Nairobi</title>
+  <meta name="description" content="Fredrick Mwendwa builds backend systems with Python and Django, and designs brand identities and social content. Based in Nairobi, Kenya.">
+  <!-- Placeholder domain below - update to the real deployed domain -->
+  <link rel="canonical" href="https://fredrickmwendwa.com/">
 
-        <nav class="main-nav" aria-label="Primary">
-          <ul>
-            <li><a href="index.html" aria-current="page">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="work.html">Work</a></li>
-            <li><a href="design.html">Design</a></li>
-            <li><a href="skills.html">Skills</a></li>
-            <li>
-              <a href="contact.html" class="btn btn-secondary">Contact</a>
-            </li>
-          </ul>
-        </nav>
+  <link rel="icon" href="assets/icons/favicon.ico" sizes="any">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
 
-        <button
-          class="nav-toggle"
-          aria-label="Open menu"
-          aria-expanded="false"
-          aria-controls="mobile-nav"
-        >
+  <meta property="og:title" content="Fredrick Mwendwa - Backend Developer & Brand Designer">
+  <meta property="og:description" content="Systems built with Python and Django. Brands built with typography and color. One person, both disciplines.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://fredrickmwendwa.com/">
+  <meta property="og:image" content="https://fredrickmwendwa.com/assets/og/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Fredrick Mwendwa">
+  <meta property="og:locale" content="en_KE">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Fredrick Mwendwa - Backend Developer & Brand Designer">
+  <meta name="twitter:description" content="Systems built with Python and Django. Brands built with typography and color. One person, both disciplines.">
+  <meta name="twitter:image" content="https://fredrickmwendwa.com/assets/og/og-image.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Fredrick Mwendwa",
+    "jobTitle": "Backend Developer & Brand Designer",
+    "url": "https://fredrickmwendwa.com/",
+    "image": "https://fredrickmwendwa.com/assets/og/og-image.png",
+    "email": "mailto:fredrickmwendwa77@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Nairobi",
+      "addressCountry": "KE"
+    },
+    "alumniOf": {
+      "@type": "EducationalOrganization",
+      "name": "Kiambu National Polytechnic"
+    },
+    "sameAs": [
+      "https://github.com/fredrickmwendwa",
+      "https://www.linkedin.com/in/fredrick-mwendwa",
+      "https://www.instagram.com/_fredrick.m_/"
+    ],
+    "knowsAbout": ["Python", "Django", "PostgreSQL", "Brand Identity Design", "Social Media Design"]
+  }
+  </script>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- ===== Header / Navigation ===== -->
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="site-logo">Fredrick<span>.</span>M</a>
+
+      <div class="nav-cluster">
+      <nav class="main-nav" aria-label="Primary">
+        <ul>
+          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="work.html">Work</a></li>
+          <li><a href="design.html">Design</a></li>
+          <li><a href="skills.html">Skills</a></li>
+          <li><a href="contact.html" class="btn btn-secondary">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
           <span></span><span></span><span></span>
         </button>
       </div>
-    </header>
+      </div>
+    </div>
+  </header>
 
-    <!-- ===== Mobile Navigation ===== -->
-    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile">
-      <ul>
-        <li><span class="nav-index">01</span><a href="index.html">Home</a></li>
-        <li><span class="nav-index">02</span><a href="about.html">About</a></li>
-        <li><span class="nav-index">03</span><a href="work.html">Work</a></li>
-        <li>
-          <span class="nav-index">04</span><a href="design.html">Design</a>
-        </li>
-        <li>
-          <span class="nav-index">05</span><a href="skills.html">Skills</a>
-        </li>
-        <li>
-          <span class="nav-index">06</span><a href="contact.html">Contact</a>
-        </li>
-      </ul>
-    </nav>
+  <!-- ===== Mobile Navigation ===== -->
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile">
+    <ul>
+      <li><span class="nav-index">01</span><a href="index.html">Home</a></li>
+      <li><span class="nav-index">02</span><a href="about.html">About</a></li>
+      <li><span class="nav-index">03</span><a href="work.html">Work</a></li>
+      <li><span class="nav-index">04</span><a href="design.html">Design</a></li>
+      <li><span class="nav-index">05</span><a href="skills.html">Skills</a></li>
+      <li><span class="nav-index">06</span><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
 
-    <main id="main">
-      <!-- ===== Hero ===== -->
-      <section class="hero container">
-        <div class="hero-grid">
-          <div>
-            <p class="eyebrow hero-eyebrow">
-              Backend Development - Brand &amp; Social Design
-            </p>
-            <h1>
-              Systems that hold up. <span class="accent">Brands</span> that hold
-              together.
-            </h1>
-            <p class="hero-sub">
-              I'm Fredrick Mwendwa - a backend developer working in Python and
-              Django, and a designer building identities and social content for
-              the same businesses I build for. Based in Kiambu, Kenya.
-            </p>
-            <div class="hero-actions">
-              <a href="work.html" class="btn btn-primary"
-                >View development work <span class="btn-arrow">→</span></a
-              >
-              <a href="design.html" class="btn btn-secondary"
-                >View design work <span class="btn-arrow">→</span></a
-              >
-            </div>
+  <main id="main" tabindex="-1">
+
+    <!-- ===== Hero ===== -->
+    <section class="hero container">
+      <div class="hero-grid">
+        <div class="hero-copy" data-reveal>
+          <p class="eyebrow hero-eyebrow">Backend Development - Brand &amp; Social Design</p>
+          <h1>Systems that hold up. <span class="accent">Brands</span> that hold together.</h1>
+          <p class="hero-sub">
+            I'm Fredrick Mwendwa, a backend developer working in Python and Django,
+            and a designer building identities and social content for the same
+            businesses I build for.
+          </p>
+          <div class="hero-actions">
+            <a href="work.html" class="btn btn-primary">View development work <span class="btn-arrow">→</span></a>
+            <a href="design.html" class="btn btn-secondary">View design work <span class="btn-arrow">→</span></a>
           </div>
-
-          <div class="hero-meta">
-            <span><strong>Location</strong> - Kiambu, Kenya</span>
-            <span
-              ><strong>Focus</strong> - Django · PostgreSQL · Brand
-              Systems</span
-            >
-            <span
-              ><strong>Status</strong> - Final-year CS student, Kiambu National
-              Polytechnic</span
-            >
-            <span
-              ><strong>Available for</strong> - freelance &amp; junior dev
-              roles</span
-            >
-          </div>
-        </div>
-      </section>
-
-      <!-- ===== Intro strip ===== -->
-      <section class="intro-strip">
-        <div class="container">
-          <span class="eyebrow eyebrow--accent">Why both</span>
-          <p>
-            Most backend work is invisible by design - a good system just works.
-            Most design work is the opposite - it's judged the moment you see
-            it. I like sitting between the two: building the part nobody
-            notices, and shaping the part everybody does.
+          <p class="hero-status">
+            <span class="availability-dot" aria-hidden="true"></span>
+            Open to freelance and junior developer work, based in Nairobi, Kenya.
           </p>
         </div>
-      </section>
 
-      <!-- ===== Selected work ===== -->
-      <section class="section container">
-        <div class="section-head">
-          <div>
-            <span class="eyebrow">Selected work</span>
-            <h2>A few things I've built.</h2>
-          </div>
-          <a
-            href="work.html"
-            class="link-underline"
-            style="font-family: var(--font-mono); font-size: var(--fs-sm)"
-          >
-            View all work →
-          </a>
-        </div>
+        <div class="hero-panel" data-reveal aria-hidden="true">
+          <svg viewBox="0 0 300 300" class="hero-panel-svg">
+            <text x="24" y="30" font-family="'JetBrains Mono', monospace" font-size="11" letter-spacing="1" fill="#565B52">SYSTEM</text>
 
-        <div class="work-row" data-reveal>
-          <div class="work-media reg-frame">
-            <div class="work-media-placeholder">
-              [ADD PROJECT SCREENSHOT]<br />1600×1200
-            </div>
-          </div>
-          <div>
-            <div class="work-tags">
-              <span class="work-tag">Python</span>
-              <span class="work-tag">Django</span>
-              <span class="work-tag">PostgreSQL</span>
-            </div>
-            <h3 class="work-title">Invetra</h3>
-            <p class="work-desc">
-              A multi-tenant inventory and sales management platform built with Django and PostgreSQL.
-            </p>
-            <a
-              href="projects/project-name.html"
-              class="work-link link-underline"
-              >Read the case study →</a
-            >
-          </div>
-        </div>
+            <rect x="24" y="46" width="10" height="10" fill="none" stroke="#2C4BE0" stroke-width="1.6"/>
+            <line x1="42" y1="51" x2="232" y2="51" stroke="#2C4BE0" stroke-width="1.6"/>
+            <rect x="24" y="72" width="10" height="10" fill="none" stroke="#2C4BE0" stroke-width="1.6"/>
+            <line x1="42" y1="77" x2="192" y2="77" stroke="#2C4BE0" stroke-width="1.6"/>
+            <rect x="24" y="98" width="10" height="10" fill="none" stroke="#2C4BE0" stroke-width="1.6"/>
+            <line x1="42" y1="103" x2="152" y2="103" stroke="#2C4BE0" stroke-width="1.6"/>
 
-        <div class="work-row" data-reveal>
-          <div class="work-media reg-frame">
-            <div class="work-media-placeholder">
-              [ADD PROJECT SCREENSHOT]<br />1600×1200
-            </div>
-          </div>
-          <div>
-            <div class="work-tags">
-              <span class="work-tag">Django REST</span>
-              <span class="work-tag">Auth</span>
-            </div>
-            <h3 class="work-title">[Add project name]</h3>
-            <p class="work-desc">
-              [ADD PROJECT DESCRIPTION - one or two sentences on the problem
-              this system solves and how it's built.]
-            </p>
-            <a
-              href="projects/project-name.html"
-              class="work-link link-underline"
-              >Read the case study →</a
-            >
-          </div>
-        </div>
-      </section>
+            <line x1="24" y1="138" x2="276" y2="138" stroke="#CBCEC3" stroke-width="1"/>
 
-      <!-- ===== Systems / Signal split ===== -->
-      <section class="section container" data-reveal>
-        <div class="section-head">
-          <div>
-            <span class="eyebrow">How I work</span>
-            <h2>Two disciplines, one way of thinking.</h2>
-          </div>
-        </div>
+            <text x="24" y="170" font-family="'JetBrains Mono', monospace" font-size="11" letter-spacing="1" fill="#565B52">SIGNAL</text>
 
-        <div class="split">
-          <div class="split-panel">
-            <span class="eyebrow eyebrow--accent">Systems</span>
-            <h3>Backend engineering</h3>
-            <ul class="split-list">
-              <li>
-                <span class="dot">→</span> Django applications built around
-                clear, well-modeled data
-              </li>
-              <li>
-                <span class="dot">→</span> REST APIs designed for the people
-                actually consuming them
-              </li>
-              <li>
-                <span class="dot">→</span> PostgreSQL schema design that doesn't
-                fight you later
-              </li>
-              <li>
-                <span class="dot">→</span> Authentication, permissions, and
-                admin tooling done properly
-              </li>
-            </ul>
-          </div>
-          <div class="split-panel split-panel--dark">
-            <span class="eyebrow eyebrow--signal">Signal</span>
-            <h3>Brand &amp; social design</h3>
-            <ul class="split-list">
-              <li>
-                <span class="dot">→</span> Identity systems - logo, type, color,
-                applied consistently
-              </li>
-              <li>
-                <span class="dot">→</span> Social content that looks
-                intentional, not templated
-              </li>
-              <li>
-                <span class="dot">→</span> Layout and hierarchy that make
-                content easy to scan
-              </li>
-              <li>
-                <span class="dot">→</span> Design decisions explained, not just
-                delivered
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
+            <circle cx="40" cy="206" r="15" fill="#2C4BE0"/>
+            <circle cx="82" cy="206" r="15" fill="#D9861F"/>
+            <circle cx="124" cy="206" r="15" fill="#14171C"/>
+            <circle cx="166" cy="206" r="15" fill="none" stroke="#CBCEC3" stroke-width="1.5"/>
 
-      <!-- ===== Closing CTA ===== -->
-      <section class="cta-band container" data-reveal>
-        <span class="eyebrow eyebrow--accent">Get in touch</span>
-        <h2>Have something to build? Let's talk it through.</h2>
-        <a href="contact.html" class="btn btn-primary"
-          >Start a conversation <span class="btn-arrow">→</span></a
-        >
-      </section>
-    </main>
-
-    <!-- ===== Footer ===== -->
-    <footer class="site-footer">
-      <div class="container">
-        <div class="footer-cta">
-          <h2>Building systems.<br />Designing signal.</h2>
-        </div>
-
-        <div class="footer-grid">
-          <div class="footer-col">
-            <span class="eyebrow">Navigate</span>
-            <div class="footer-links">
-              <a href="about.html">About</a>
-              <a href="work.html">Work</a>
-              <a href="design.html">Design</a>
-              <a href="skills.html">Skills</a>
-            </div>
-          </div>
-          <div class="footer-col">
-            <span class="eyebrow">Connect</span>
-            <div class="footer-links">
-              <a href="mailto:fredrickmwendwa77@gmail.com">Email</a>
-              <a href="https://github.com/fredrickmwendwa/">GitHub</a>
-              <a href="https://www.linkedin.com/in/fredrick-mwendwa/">LinkedIn</a>
-            </div>
-          </div>
-          <div class="footer-col">
-            <span class="eyebrow">Contact</span>
-            <div class="footer-links">
-              <a href="contact.html">Send a message →</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="footer-meta">
-          <span>&copy; <span id="footer-year"></span> Fredrick Mwendwa. All rights reserved.</span>
+            <text x="24" y="256" font-family="'JetBrains Mono', monospace" font-size="10" fill="#565B52">Backend logic, brand systems -</text>
+            <text x="24" y="270" font-family="'JetBrains Mono', monospace" font-size="10" fill="#565B52">same discipline, applied twice.</text>
+          </svg>
         </div>
       </div>
-    </footer>
+    </section>
 
-    <script src="js/navigation.js"></script>
-    <script src="js/animations.js"></script>
-    <script src="js/main.js"></script>
-    <script>
-      document.getElementById("footer-year").textContent =
-        new Date().getFullYear();
-    </script>
-  </body>
+    <!-- ===== Intro strip ===== -->
+    <section class="intro-strip">
+      <div class="container">
+        <span class="eyebrow eyebrow--accent">Why both</span>
+        <p>
+          Most backend work is invisible by design - a good system just works.
+          Most design work is the opposite - it's judged the moment you see it.
+          I like sitting between the two: building the part nobody notices,
+          and shaping the part everybody does.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== Selected work ===== -->
+    <section class="section container">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Selected work</span>
+          <h2>A few things I've built.</h2>
+        </div>
+        <a href="work.html" class="link-underline" style="font-family: var(--font-mono); font-size: var(--fs-sm);">
+          View all work →
+        </a>
+      </div>
+
+      <div class="work-row" data-reveal>
+        <div class="work-media reg-frame">
+          <img src="https://placehold.co/1600x1200/E4E6DC/565B52?text=Add+Project+Screenshot" alt="[ADD PROJECT SCREENSHOT] Placeholder, replace with a real screenshot of this project" width="1600" height="1200" loading="lazy">
+        </div>
+        <div>
+          <div class="work-tags">
+            <span class="work-tag">Python</span>
+            <span class="work-tag">Django</span>
+            <span class="work-tag">PostgreSQL</span>
+          </div>
+          <h3 class="work-title">[Add project name]</h3>
+          <p class="work-desc">[ADD PROJECT DESCRIPTION - one or two sentences on the problem this system solves and how it's built.]</p>
+          <a href="projects/project-name.html" class="work-link link-underline">Read the case study →</a>
+        </div>
+      </div>
+
+      <div class="work-row" data-reveal>
+        <div class="work-media reg-frame">
+          <img src="https://placehold.co/1600x1200/E4E6DC/565B52?text=Add+Project+Screenshot" alt="[ADD PROJECT SCREENSHOT] Placeholder, replace with a real screenshot of this project" width="1600" height="1200" loading="lazy">
+        </div>
+        <div>
+          <div class="work-tags">
+            <span class="work-tag">Django REST</span>
+            <span class="work-tag">Auth</span>
+          </div>
+          <h3 class="work-title">[Add project name]</h3>
+          <p class="work-desc">[ADD PROJECT DESCRIPTION - one or two sentences on the problem this system solves and how it's built.]</p>
+          <a href="projects/project-name.html" class="work-link link-underline">Read the case study →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Systems / Signal split ===== -->
+    <section class="section container" data-reveal>
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">How I work</span>
+          <h2>Two disciplines, one way of thinking.</h2>
+        </div>
+      </div>
+
+      <div class="split">
+        <div class="split-panel">
+          <span class="eyebrow eyebrow--accent">Systems</span>
+          <h3>Backend engineering</h3>
+          <ul class="split-list">
+            <li><span class="dot">→</span> Django applications built around clear, well-modeled data</li>
+            <li><span class="dot">→</span> REST APIs designed for the people actually consuming them</li>
+            <li><span class="dot">→</span> PostgreSQL schema design that doesn't fight you later</li>
+            <li><span class="dot">→</span> Authentication, permissions, and admin tooling done properly</li>
+          </ul>
+        </div>
+        <div class="split-panel split-panel--dark">
+          <span class="eyebrow eyebrow--signal">Signal</span>
+          <h3>Brand &amp; social design</h3>
+          <ul class="split-list">
+            <li><span class="dot">→</span> Identity systems - logo, type, color, applied consistently</li>
+            <li><span class="dot">→</span> Social content that looks intentional, not templated</li>
+            <li><span class="dot">→</span> Layout and hierarchy that make content easy to scan</li>
+            <li><span class="dot">→</span> Design decisions explained, not just delivered</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Closing CTA ===== -->
+    <section class="cta-band container" data-reveal>
+      <span class="eyebrow eyebrow--accent">Get in touch</span>
+      <h2>Have something to build? Let's talk it through.</h2>
+      <a href="contact.html" class="btn btn-primary">Start a conversation <span class="btn-arrow">→</span></a>
+    </section>
+
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-cta">
+        <h2>Building systems.<br>Designing signal.</h2>
+      </div>
+
+      <div class="footer-grid">
+        <div class="footer-col">
+          <span class="eyebrow">Navigate</span>
+          <div class="footer-links">
+            <a href="about.html">About</a>
+            <a href="work.html">Work</a>
+            <a href="design.html">Design</a>
+            <a href="skills.html">Skills</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <span class="eyebrow">Connect</span>
+          <div class="footer-links">
+            <a href="mailto:fredrickmwendwa77@gmail.com">Email</a>
+            <a href="https://github.com/fredrickmwendwa">GitHub</a>
+            <a href="https://www.linkedin.com/in/fredrick-mwendwa">LinkedIn</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <span class="eyebrow">Contact</span>
+          <div class="footer-links">
+            <a href="contact.html">Send a message -&gt;</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-meta">
+        <span>&copy; <span id="footer-year"></span> Fredrick Mwendwa. All rights reserved.</span>
+        <a href="#main" class="back-to-top">Back to top <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/navigation.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/main.js"></script>
+</body>
 </html>

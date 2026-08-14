@@ -1,4 +1,4 @@
-// navigation.js — mobile menu open/close behavior, shared across all pages
+// navigation.js - mobile menu open/close behavior, shared across all pages
 
 (function () {
   const toggle = document.querySelector('.nav-toggle');
@@ -10,6 +10,7 @@
   function openMenu() {
     mobileNav.classList.add('is-open');
     toggle.setAttribute('aria-expanded', 'true');
+    toggle.setAttribute('aria-label', 'Close menu');
     body.classList.add('no-scroll');
     const firstLink = mobileNav.querySelector('a');
     if (firstLink) firstLink.focus({ preventScroll: true });
@@ -18,6 +19,7 @@
   function closeMenu() {
     mobileNav.classList.remove('is-open');
     toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Open menu');
     body.classList.remove('no-scroll');
   }
 

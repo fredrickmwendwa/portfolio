@@ -55,7 +55,7 @@
 .work-item-index {
   font-family: var(--font-mono);
   font-size: var(--fs-xs);
-  color: var(--color-signal);
+  color: var(--color-signal-text);
   margin-bottom: var(--space-2);
   display: block;
 }
