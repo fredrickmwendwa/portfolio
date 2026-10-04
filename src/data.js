@@ -26,6 +26,7 @@ export const projects = [
     imageAlt: '[describe the screenshot]',
     slotLabel: 'Screenshot slot · 16:10 · /images/projects/project-01.webp',
   },
+  
   {
     id: 'c2',
     num: '02 / 03',

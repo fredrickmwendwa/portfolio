@@ -123,10 +123,9 @@ function Work() {
   return (
     <section id="work" className="sec" style={{ paddingBottom: 0 }} aria-labelledby="work-h">
       <div className="wrap">
-        <Route left="GET /work" right="200 OK · 3 placeholders" />
+        <Route left="GET /work" right="200 OK · 3 projects" />
         <div className="g12 sec-head">
           <h2 id="work-h" className="h2" style={{ gridColumn: '1 / span 7' }}>Selected work</h2>
-          <p className="ph" style={{ gridColumn: '9 / span 4', color: 'var(--graphite)', borderColor: 'var(--graphite)' }}>[PLACEHOLDERS — replace each case with a real project: name, screenshot, role, stack, outcome]</p>
         </div>
 
         {/* CASE 01 — featured */}
@@ -217,7 +216,7 @@ function TurningPoint() {
         </div>
         <div className="g12" style={{ marginTop: 'clamp(40px,5vw,72px)', rowGap: 28 }}>
           <p style={{ gridColumn: '1 / span 6', color: 'var(--mist-2)', fontSize: 18, lineHeight: 1.55 }}>PHP, Laravel and MySQL, applied to real business applications. This is where front-end work became software with data, rules and users behind it.</p>
-          <div className="ph" style={{ gridColumn: '8 / span 5' }}>[ORGANISATION — ADD IF YOU WISH]<br />[DATES — SEP – DEC 2025]<br />[WHAT YOU BUILT / OWNED — ADD IF YOU WISH]</div>
+          <div className="ph" style={{ gridColumn: '8 / span 5' }}>ICT AUTHORITY<br />SEP – DEC 2025</div>
         </div>
       </div>
     </section>
@@ -233,8 +232,8 @@ function About() {
         <Route left="GET /about" right="200 OK" />
         <div className="g12 about-grid" style={{ marginTop: 'clamp(28px,4vw,56px)', alignItems: 'start', rowGap: 32 }}>
           <div style={{ gridColumn: '1 / span 4' }}>
-            {/* Put your photo in /public/images and pass src="/images/fredrick-portrait.webp" */}
-            <Slot src="" alt="Portrait of Fredrick Mwendwa" label="Portrait slot · 4:5" className="portrait" />
+    
+            <Slot src="/images/fredrick.jpg" alt="Portrait of Fredrick Mwendwa" label="Portrait slot · 4:5" className="portrait" />
           </div>
           <div className="about" style={{ gridColumn: '6 / span 7' }}>
             <h2 id="about-h" className="h2">Early in my career. Serious about the craft.</h2>
