@@ -1,14 +1,14 @@
 // ─────────────────────────────────────────────────────────────
-// EDIT ME: all project content lives here.
-// Replace each [PLACEHOLDER] with real text. Set `image` to a path
-// in /public (e.g. '/images/projects/project-01.webp') to fill the
-// screenshot slot. Set liveUrl / sourceUrl to real links.
+// Site content. Edit the text here; the layout updates itself.
+// Project screenshots live in /public/images and are referenced
+// by path (for example '/images/project-1.jpg').
 // ─────────────────────────────────────────────────────────────
 
 export const EMAIL = 'fredrickmwendwa77@gmail.com';
 export const LINKEDIN = 'https://linkedin.com/in/fredrick-mwendwa';
 export const GITHUB = 'https://github.com/fredrickmwendwa';
 
+export const SITE_URL = 'https://fredrickmwendwa.vercel.app';
 
 export const projects = [
   {
@@ -25,7 +25,6 @@ export const projects = [
     sourceUrl: 'https://github.com/fredrickmwendwa/inventra',
     image: '/images/project-1.jpg',
     imageAlt: 'Inventra inventory management platform',
-    slotLabel: 'Screenshot · /images/project-1.jpg',
   },
 
   {
@@ -42,7 +41,6 @@ export const projects = [
     sourceUrl: 'https://github.com/fredrickmwendwa/ecommerce-api',
     image: '/images/project-2.jpg',
     imageAlt: 'E-commerce API project',
-    slotLabel: 'Screenshot · /images/project-2.jpg',
   },
 
   {
@@ -59,7 +57,6 @@ export const projects = [
     sourceUrl: 'https://github.com/fredrickmwendwa/job-board-api',
     image: '/images/project-3.jpg',
     imageAlt: 'Job board API project',
-    slotLabel: 'Screenshot · /images/project-3.jpg',
   },
 ];
 
@@ -76,7 +73,7 @@ export const journey = [
     n: '02 · SEP – DEC 2025',
     title: 'Business applications',
     tech: 'PHP · Laravel · MySQL',
-    story: 'I learned how systems work behind those interfaces. A 3-month industrial attachment: the turning point from pages to systems.',
+    story: 'I learned how systems work behind those interfaces. A 3-month industrial attachment at ICT Authority, where I built three full-stack systems. The turning point from pages to systems.',
     shape: 'Application',
     mark: '□ □',
   },

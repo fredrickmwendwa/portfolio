@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && vite build --ssr src/entry-server.jsx --outDir dist-server && node scripts/prerender.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -15,5 +15,11 @@
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.1",
     "vite": "^5.4.8"
-  }
+  },
+  "engines": {
+    "node": ">=18.18"
+  },
+  "description": "Portfolio of Fredrick Mwendwa, full-stack developer in Nairobi.",
+  "author": "Fredrick Mwendwa",
+  "license": "UNLICENSED"
 }

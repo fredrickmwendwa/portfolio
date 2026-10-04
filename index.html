@@ -3,41 +3,102 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Fredrick Mwendwa — Full-Stack Developer in Nairobi</title>
     <meta name="description" content="Full-stack developer in Nairobi building React and Django applications, seeking software engineering internship and junior opportunities." />
+    <meta name="author" content="Fredrick Mwendwa" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <link rel="canonical" href="https://fredrickmwendwa.vercel.app/" />
     <meta name="theme-color" content="#ECEEE9" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="color-scheme" content="light" />
 
+    <!-- Icons -->
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Fredrick Mwendwa" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:title" content="Fredrick Mwendwa — Full-Stack Developer in Nairobi" />
     <meta property="og:description" content="Full-stack developer in Nairobi building React and Django applications, seeking software engineering internship and junior opportunities." />
     <meta property="og:url" content="https://fredrickmwendwa.vercel.app/" />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content="https://fredrickmwendwa.vercel.app/og-image.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Fredrick Mwendwa, full-stack developer in Nairobi: I build complete web products, from interface to API." />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Fredrick Mwendwa — Full-Stack Developer in Nairobi" />
     <meta name="twitter:description" content="Full-stack developer in Nairobi building React and Django applications, seeking software engineering internship and junior opportunities." />
+    <meta name="twitter:image" content="https://fredrickmwendwa.vercel.app/og-image.png" />
+    <meta name="twitter:image:alt" content="Fredrick Mwendwa, full-stack developer in Nairobi" />
 
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" />
 
+    <!-- Structured data -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Fredrick Mwendwa",
-        "jobTitle": "Full-Stack Developer",
-        "email": "mailto:fredrickmwendwa77@gmail.com",
-        "url": "https://fredrickmwendwa.vercel.app/",
-        "address": { "@type": "PostalAddress", "addressLocality": "Nairobi", "addressCountry": "KE" },
-        "alumniOf": { "@type": "CollegeOrUniversity", "name": "Kiambu National Polytechnic" },
-        "knowsAbout": ["React", "Python", "Django", "Django REST Framework", "PHP", "Laravel", "PostgreSQL", "MySQL"],
-        "sameAs": ["https://linkedin.com/in/fredrick-mwendwa", "https://github.com/fredrickmwendwa"]
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://fredrickmwendwa.vercel.app/#website",
+            "url": "https://fredrickmwendwa.vercel.app/",
+            "name": "Fredrick Mwendwa",
+            "description": "Portfolio of Fredrick Mwendwa, full-stack developer in Nairobi, Kenya.",
+            "inLanguage": "en",
+            "publisher": { "@id": "https://fredrickmwendwa.vercel.app/#person" }
+          },
+          {
+            "@type": "ProfilePage",
+            "@id": "https://fredrickmwendwa.vercel.app/#webpage",
+            "url": "https://fredrickmwendwa.vercel.app/",
+            "name": "Fredrick Mwendwa — Full-Stack Developer in Nairobi",
+            "isPartOf": { "@id": "https://fredrickmwendwa.vercel.app/#website" },
+            "about": { "@id": "https://fredrickmwendwa.vercel.app/#person" },
+            "mainEntity": { "@id": "https://fredrickmwendwa.vercel.app/#person" },
+            "primaryImageOfPage": { "@type": "ImageObject", "url": "https://fredrickmwendwa.vercel.app/og-image.png", "width": 1200, "height": 630 },
+            "inLanguage": "en"
+          },
+          {
+            "@type": "Person",
+            "@id": "https://fredrickmwendwa.vercel.app/#person",
+            "name": "Fredrick Mwendwa",
+            "givenName": "Fredrick",
+            "familyName": "Mwendwa",
+            "jobTitle": "Full-Stack Developer",
+            "description": "Final-year Computer Science student and full-stack developer in Nairobi, building React and Django applications.",
+            "url": "https://fredrickmwendwa.vercel.app/",
+            "image": "https://fredrickmwendwa.vercel.app/images/fredrick.jpg",
+            "email": "mailto:fredrickmwendwa77@gmail.com",
+            "address": { "@type": "PostalAddress", "addressLocality": "Nairobi", "addressCountry": "KE" },
+            "homeLocation": { "@type": "Place", "name": "Nairobi, Kenya" },
+            "alumniOf": { "@type": "CollegeOrUniversity", "name": "Kiambu National Polytechnic" },
+            "knowsAbout": ["React", "JavaScript", "Python", "Django", "Django REST Framework", "PHP", "Laravel", "PostgreSQL", "MySQL", "REST API design", "Web development"],
+            "sameAs": ["https://linkedin.com/in/fredrick-mwendwa", "https://github.com/fredrickmwendwa"]
+          }
+        ]
       }
     </script>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root"><!--app-html--></div>
+    <noscript>
+      <p style="font-family:system-ui,sans-serif;padding:24px;max-width:40em">
+        Fredrick Mwendwa is a full-stack developer in Nairobi, Kenya, building React and Django applications and looking for an internship or junior software engineering role.
+        Email: fredrickmwendwa77@gmail.com
+      </p>
+    </noscript>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

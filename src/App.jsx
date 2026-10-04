@@ -12,34 +12,39 @@ function Route({ left, right }) {
   );
 }
 
-function Slot({ src, alt, label, className = '' }) {
+function Slot({ src, alt, className = '' }) {
   return (
     <div className={`slot ${className}`}>
-      {src ? <img src={src} alt={alt} loading="lazy" /> : <span className="mono">{label}</span>}
+      {src ? <img src={src} alt={alt} loading="lazy" decoding="async" /> : null}
     </div>
   );
 }
 
 function CaseLinks({ p }) {
+  if (!p.liveUrl && !p.sourceUrl) return null;
   return (
     <div className="case-links">
-      <a href={p.liveUrl || '#'} {...(p.liveUrl ? { target: '_blank', rel: 'noreferrer' } : {})}>
-        Live site{p.liveUrl ? '' : ' [LIVE URL]'} <span aria-hidden="true">↗</span>
-      </a>
-      <a href={p.sourceUrl || '#'} {...(p.sourceUrl ? { target: '_blank', rel: 'noreferrer' } : {})}>
-        Source code{p.sourceUrl ? '' : ' [SOURCE CODE URL]'} <span aria-hidden="true">↗</span>
-      </a>
+      {p.liveUrl && (
+        <a href={p.liveUrl} target="_blank" rel="noopener noreferrer">
+          Live site <span aria-hidden="true">↗</span>
+        </a>
+      )}
+      {p.sourceUrl && (
+        <a href={p.sourceUrl} target="_blank" rel="noopener noreferrer">
+          Source code <span aria-hidden="true">↗</span>
+        </a>
+      )}
     </div>
   );
 }
 
-function Facts({ p, className = '' }) {
+function Facts({ p }) {
   return (
-    <dl className={`facts ${className}`}>
-      <div><dt>PROBLEM</dt><dd><i>{p.problem}</i></dd></div>
-      <div><dt>BUILT</dt><dd><i>{p.built}</i></dd></div>
-      <div><dt>ROLE</dt><dd><i>{p.role}</i></dd></div>
-      <div><dt>OUTCOME</dt><dd><i>{p.outcome}</i></dd></div>
+    <dl className="facts">
+      <div><dt>PROBLEM</dt><dd>{p.problem}</dd></div>
+      <div><dt>BUILT</dt><dd>{p.built}</dd></div>
+      <div><dt>ROLE</dt><dd>{p.role}</dd></div>
+      <div><dt>OUTCOME</dt><dd>{p.outcome}</dd></div>
     </dl>
   );
 }
@@ -55,12 +60,51 @@ function CaseHead({ p }) {
   );
 }
 
-/* ───────── hero ───────── */
+/* ───────── header: sticky, hides on scroll down, returns on scroll up (desktop) ───────── */
 
-function Hero() {
+function SiteHeader() {
+  const [hidden, setHidden] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    let lastY = window.scrollY;
+    let ticking = false;
+
+    const update = () => {
+      const y = Math.max(window.scrollY, 0);
+      const delta = y - lastY;
+      setScrolled(y > 8);
+      if (y < 96) {
+        setHidden(false);
+      } else if (delta > 6) {
+        // stay visible while keyboard focus is inside the header
+        if (!ref.current?.contains(document.activeElement)) setHidden(true);
+      } else if (delta < -4) {
+        setHidden(false);
+      }
+      if (Math.abs(delta) > 4) lastY = y;
+      ticking = false;
+    };
+
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(update);
+      }
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   return (
-    <header className="hero">
-      <div className="wrap" style={{ width: '100%' }}>
+    <div
+      ref={ref}
+      className={`site-header${hidden ? ' is-hidden' : ''}${scrolled ? ' is-scrolled' : ''}`}
+      onFocusCapture={() => setHidden(false)}
+    >
+      <div className="wrap">
         <nav className="nav" aria-label="Primary">
           <a className="logo" href="#top" aria-label="Fredrick Mwendwa, home"><b>FM</b><span>Fredrick Mwendwa</span></a>
           <div className="links">
@@ -71,7 +115,15 @@ function Hero() {
           </div>
         </nav>
       </div>
+    </div>
+  );
+}
 
+/* ───────── hero ───────── */
+
+function Hero() {
+  return (
+    <section className="hero" aria-label="Introduction">
       <div className="wrap hero-main g12" style={{ width: '100%' }}>
         <div className="hero-l">
           <p className="mono eyebrow" data-rise style={{ animationDelay: '.05s' }}>Fredrick Mwendwa — Full-stack developer</p>
@@ -112,7 +164,7 @@ function Hero() {
           <a className="scroll" href="#work" style={{ minHeight: 44, display: 'inline-flex', alignItems: 'center' }}>GET /work ↓</a>
         </div>
       </div>
-    </header>
+    </section>
   );
 }
 
@@ -128,9 +180,9 @@ function Work() {
           <h2 id="work-h" className="h2" style={{ gridColumn: '1 / span 7' }}>Selected work</h2>
         </div>
 
-        {/* CASE 01 — featured */}
+        {/* CASE 01 */}
         <article className="case g12" aria-labelledby={p1.id}>
-          <div className="c1-img"><Slot src={p1.image} alt={p1.imageAlt} label={p1.slotLabel} /></div>
+          <div className="c1-img"><Slot src={p1.image} alt={p1.imageAlt} /></div>
           <div className="c1-meta">
             <CaseHead p={p1} />
             <Facts p={p1} />
@@ -139,7 +191,7 @@ function Work() {
         </article>
       </div>
 
-      {/* CASE 02 — night band, mirrored */}
+      {/* CASE 02: night band, mirrored */}
       <div className="band night" style={{ marginTop: 'clamp(64px,8vw,120px)', paddingBlock: 'clamp(56px,7vw,104px)' }}>
         <div className="wrap">
           <article className="g12" style={{ alignItems: 'center' }} aria-labelledby={p2.id}>
@@ -148,18 +200,18 @@ function Work() {
               <Facts p={p2} />
               <CaseLinks p={p2} />
             </div>
-            <div className="c2-img"><Slot src={p2.image} alt={p2.imageAlt} label={p2.slotLabel} className="r54" /></div>
+            <div className="c2-img"><Slot src={p2.image} alt={p2.imageAlt} className="r54" /></div>
           </article>
         </div>
       </div>
 
-      {/* CASE 03 — ledger row */}
+      {/* CASE 03: same composition as 01 */}
       <div className="wrap">
-        <article className="case g12" style={{ alignItems: 'start', paddingBottom: 'clamp(64px,8vw,120px)' }} aria-labelledby={p3.id}>
-          <div className="c3-img"><Slot src={p3.image} alt={p3.imageAlt} label={p3.slotLabel} className="r43" /></div>
-          <div className="c3-meta">
+        <article className="case g12" style={{ paddingBottom: 'clamp(64px,8vw,120px)' }} aria-labelledby={p3.id}>
+          <div className="c1-img"><Slot src={p3.image} alt={p3.imageAlt} /></div>
+          <div className="c1-meta">
             <CaseHead p={p3} />
-            <Facts p={p3} className="c3-cols" />
+            <Facts p={p3} />
             <CaseLinks p={p3} />
           </div>
         </article>
@@ -197,32 +249,6 @@ function Journey() {
   );
 }
 
-/* ───────── attachment / turning point ───────── */
-
-function TurningPoint() {
-  return (
-    <section className="band night sec" aria-labelledby="turn-h">
-      <div className="wrap">
-        <Route left="PATCH /turning-point" right="Industrial attachment · 3 months" />
-        <div className="g12" style={{ marginTop: 'clamp(36px,5vw,72px)', alignItems: 'end', rowGap: 48 }}>
-          <h2 id="turn-h" className="turn-q" style={{ gridColumn: '1 / span 8', margin: 0 }}>
-            <span className="old">“How does this page look?”</span>
-            <span className="new">“How does this business actually run?”</span>
-          </h2>
-          <div style={{ gridColumn: '10 / span 3' }}>
-            <p className="bignum" aria-hidden="true">3</p>
-            <p style={{ marginTop: 16, fontSize: 16, lineHeight: 1.5, color: 'var(--mist)' }}><span className="sr">3 </span>full-stack systems built during the attachment.</p>
-          </div>
-        </div>
-        <div className="g12" style={{ marginTop: 'clamp(40px,5vw,72px)', rowGap: 28 }}>
-          <p style={{ gridColumn: '1 / span 6', color: 'var(--mist-2)', fontSize: 18, lineHeight: 1.55 }}>PHP, Laravel and MySQL, applied to real business applications. This is where front-end work became software with data, rules and users behind it.</p>
-          <div className="ph" style={{ gridColumn: '8 / span 5' }}>ICT AUTHORITY<br />SEP – DEC 2025</div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 /* ───────── about ───────── */
 
 function About() {
@@ -232,8 +258,7 @@ function About() {
         <Route left="GET /about" right="200 OK" />
         <div className="g12 about-grid" style={{ marginTop: 'clamp(28px,4vw,56px)', alignItems: 'start', rowGap: 32 }}>
           <div style={{ gridColumn: '1 / span 4' }}>
-    
-            <Slot src="/images/fredrick.jpg" alt="Portrait of Fredrick Mwendwa" label="Portrait slot · 4:5" className="portrait" />
+            <Slot src="/images/fredrick.jpg" alt="Portrait of Fredrick Mwendwa, full-stack developer in Nairobi" className="portrait" />
           </div>
           <div className="about" style={{ gridColumn: '6 / span 7' }}>
             <h2 id="about-h" className="h2">Early in my career. Serious about the craft.</h2>
@@ -314,7 +339,7 @@ function Contact() {
     try {
       await navigator.clipboard.writeText(EMAIL);
     } catch (e) {
-      /* clipboard unavailable: still show feedback */
+      /* clipboard unavailable: feedback still shows and the address stays visible */
     }
     setCopied(true);
     clearTimeout(timer.current);
@@ -322,19 +347,44 @@ function Contact() {
   };
 
   return (
-    <section id="contact" className="band night sec" aria-labelledby="contact-h">
+    <section id="contact" className="band night sec cta-sec" aria-labelledby="contact-h">
       <div className="wrap">
         <Route left="POST /contact" right="Open to internship / junior roles" />
-        <h2 id="contact-h" className="h2" style={{ marginTop: 'clamp(36px,5vw,72px)', fontSize: 'clamp(44px,8vw,120px)', maxWidth: '11em', lineHeight: 0.97 }}>Building something worth shipping?</h2>
-        <p className="lead" style={{ marginTop: 28, color: 'var(--mist-2)', maxWidth: '30em' }}>I'm open to full-stack software engineering internships and junior roles. Send a note; I reply quickly.</p>
-        <div className="mail">
-          <a className="mail-addr" href={`mailto:${EMAIL}`}>{EMAIL}</a>
-          <button className="copy" type="button" onClick={copy} data-copied={copied ? 'true' : 'false'}>{copied ? 'Copied ✓' : 'Copy email'}</button>
-          <span className="sr" role="status" aria-live="polite">{copied ? 'Email address copied to clipboard' : ''}</span>
-        </div>
-        <div className="social">
-          <a href={LINKEDIN} target="_blank" rel="noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
-          <a href={GITHUB} target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+        <div className="cta-grid g12">
+          <div className="cta-l">
+            <p className="avail-pill mono"><i className="dot" />Available now · Nairobi, Kenya</p>
+            <h2 id="contact-h" className="cta-h">Building something worth <span className="u">shipping?</span></h2>
+            <p className="lead">I'm open to full-stack software engineering internships and junior roles. Send a note; I reply quickly.</p>
+            <div className="cta-actions">
+              <a className="btn signal" href={`mailto:${EMAIL}?subject=Hello%20Fredrick`}>Email me <span className="ar" aria-hidden="true">→</span></a>
+              <button className="btn line" type="button" onClick={copy} data-copied={copied ? 'true' : 'false'}>{copied ? 'Copied ✓' : 'Copy email'}</button>
+              <span className="sr" role="status" aria-live="polite">{copied ? 'Email address copied to clipboard' : ''}</span>
+            </div>
+          </div>
+
+          <ul className="cta-r cta-list">
+            <li>
+              <a href={`mailto:${EMAIL}`}>
+                <span className="k mono">Email</span>
+                <span className="v">{EMAIL}</span>
+                <span className="go" aria-hidden="true">↗</span>
+              </a>
+            </li>
+            <li>
+              <a href={LINKEDIN} target="_blank" rel="noopener noreferrer">
+                <span className="k mono">LinkedIn</span>
+                <span className="v">/in/fredrick-mwendwa</span>
+                <span className="go" aria-hidden="true">↗</span>
+              </a>
+            </li>
+            <li>
+              <a href={GITHUB} target="_blank" rel="noopener noreferrer">
+                <span className="k mono">GitHub</span>
+                <span className="v">/fredrickmwendwa</span>
+                <span className="go" aria-hidden="true">↗</span>
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     </section>
@@ -347,7 +397,7 @@ function Footer() {
       <div className="wrap">
         <div className="foot mono">
           <span>Fredrick Mwendwa · Full-stack developer · Nairobi, Kenya</span>
-          <span><a href={LINKEDIN}>LinkedIn</a> · <a href={GITHUB}>GitHub</a> · <a href={`mailto:${EMAIL}`}>Email</a> · © 2026</span>
+          <span><a href={LINKEDIN} rel="noopener noreferrer">LinkedIn</a> · <a href={GITHUB} rel="noopener noreferrer">GitHub</a> · <a href={`mailto:${EMAIL}`}>Email</a> · © 2026</span>
         </div>
       </div>
     </footer>
@@ -360,11 +410,11 @@ export default function App() {
   return (
     <div id="top">
       <a className="sr" href="#work">Skip to selected work</a>
+      <SiteHeader />
       <Hero />
       <main>
         <Work />
         <Journey />
-        <TurningPoint />
         <About />
         <Stack />
         <HowIWork />
