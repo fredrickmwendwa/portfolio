@@ -10,6 +10,8 @@ A fast, accessible, handcrafted portfolio for a full-stack developer based in Na
 
 - **Prerendered React.** The page is rendered to static HTML at build time and hydrated in the browser, so content is visible before any JavaScript runs.
 - **Considered motion.** Masked headline reveal, scroll-triggered section reveals, a reading progress bar and a header that hides on scroll down and returns on scroll up. All of it respects `prefers-reduced-motion`.
+- **Light and dark themes.** Follows the system setting, with a manual toggle that remembers your choice and no flash on load.
+- **Small interactions.** Magnetic buttons, a project index that previews each project under the cursor, and a mobile dock that tracks the section you are reading.
 - **Hand-written CSS.** No UI framework. A small set of design tokens, a 12-column grid and fluid type scale.
 - **Mobile first.** A bottom dock navigation replaces the header on small screens.
 - **Accessible by default.** Semantic landmarks, visible focus states, skip link, live-region feedback and AA contrast.
@@ -53,7 +55,7 @@ The dev server runs at `http://localhost:5173`.
 ├── vercel.json           Security and cache headers
 ├── scripts/
 │   └── prerender.mjs     Injects server-rendered HTML into the build
-├── public/               Icons, social image, robots.txt, sitemap, manifest
+├── public/               Icons, social image, CV, 404 page, robots.txt, sitemap, manifest
 └── src/
     ├── App.jsx           Page sections and components
     ├── data.js           All site content (projects, about, tools)

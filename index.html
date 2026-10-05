@@ -4,6 +4,13 @@
     <meta charset="UTF-8" />
     <script>
       document.documentElement.classList.add('js');
+      (function () {
+        var t = null;
+        try { t = localStorage.getItem('theme'); } catch (e) {}
+        if (t !== 'light' && t !== 'dark') t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.dataset.theme = t;
+        window.__theme = t;
+      })();
       window.__revealFallback = setTimeout(function () { document.documentElement.classList.add('reveal-all'); }, 3500);
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -13,8 +20,9 @@
     <meta name="author" content="Fredrick Mwendwa" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <link rel="canonical" href="https://fredrickmwendwa.vercel.app/" />
-    <meta name="theme-color" content="#F1EEE8" />
-    <meta name="color-scheme" content="light" />
+    <meta name="theme-color" content="#F1EEE8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#14130F" media="(prefers-color-scheme: dark)" />
+    <meta name="color-scheme" content="light dark" />
 
     <!-- Icons -->
     <link rel="icon" href="/favicon.ico" sizes="48x48" />

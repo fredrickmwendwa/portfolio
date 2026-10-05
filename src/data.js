@@ -8,6 +8,7 @@ export const SITE_URL = 'https://fredrickmwendwa.vercel.app';
 export const EMAIL = 'fredrickmwendwa77@gmail.com';
 export const LINKEDIN = 'https://linkedin.com/in/fredrick-mwendwa';
 export const GITHUB = 'https://github.com/fredrickmwendwa';
+export const CV_URL = '/Fredrick_Mwendwa_CV.pdf';
 
 export const projects = [
   {
@@ -16,12 +17,15 @@ export const projects = [
     kind: 'Inventory & sales management platform',
     desc: 'A multi-tenant platform for managing products, stock, sales, suppliers and staff.',
     stack: ['Python', 'Django', 'Django REST Framework', 'PostgreSQL'],
+    highlight: 'Multi-tenant by design',
+    covers: ['Products', 'Stock', 'Sales', 'Suppliers', 'Staff'],
+    layout: 'l',
     problem: 'Businesses need a simple system to manage inventory, sales, suppliers and staff.',
     role: 'Backend development, database design, authentication and business logic.',
     outcome: 'A functional business management platform built with Django and PostgreSQL.',
     liveUrl: SITE_URL,
     sourceUrl: 'https://github.com/fredrickmwendwa/inventra',
-    image: '/images/project-1.jpg',
+    image: '/images/project-1.webp',
     imageAlt: 'Inventra inventory management platform',
   },
   {
@@ -30,12 +34,15 @@ export const projects = [
     kind: 'Online store engine',
     desc: 'Authentication, products, carts, checkout and order management for an online store.',
     stack: ['Python', 'Django', 'Django REST Framework', 'PostgreSQL'],
+    highlight: 'From cart to checkout to order',
+    covers: ['Authentication', 'Products', 'Carts', 'Checkout', 'Orders'],
+    layout: 'r',
     problem: 'Online stores need a reliable backend for products, carts, checkout and orders.',
     role: 'API development, authentication, database design and checkout logic.',
     outcome: 'A functional system for core e-commerce operations.',
     liveUrl: SITE_URL,
     sourceUrl: 'https://github.com/fredrickmwendwa/ecommerce-api',
-    image: '/images/project-2.jpg',
+    image: '/images/project-2.webp',
     imageAlt: 'E-commerce API project',
   },
   {
@@ -44,12 +51,15 @@ export const projects = [
     kind: 'Recruitment platform',
     desc: 'Jobs, applications, resumes, search and application tracking, connecting employers and job seekers.',
     stack: ['Python', 'Django', 'Django REST Framework', 'PostgreSQL'],
+    highlight: 'Search and application tracking',
+    covers: ['Jobs', 'Applications', 'Resumes', 'Search', 'Tracking'],
+    layout: 'wide',
     problem: 'Recruitment platforms need secure job posting and application workflows.',
     role: 'API development, authentication, permissions and application workflows.',
     outcome: 'A functional backend for connecting employers and job seekers.',
     liveUrl: SITE_URL,
     sourceUrl: 'https://github.com/fredrickmwendwa/job-board-api',
-    image: '/images/project-3.jpg',
+    image: '/images/project-3.webp',
     imageAlt: 'Job board API project',
   },
 ];
