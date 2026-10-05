@@ -1,92 +1,34 @@
-<div align="center">
+# Fredrick Mwendwa | Portfolio
 
-# Fredrick Mwendwa — Portfolio
+A fast, accessible, handcrafted portfolio for a full-stack developer based in Nairobi, Kenya. Built with React and Vite, prerendered at build time so it loads instantly and reads cleanly to search engines.
 
-**Full-stack developer in Nairobi, Kenya.** A fast, accessible, pre-rendered portfolio built with React and Vite.
+**Live site:** [fredrickmwendwa.vercel.app](https://fredrickmwendwa.vercel.app)
 
-[Live site](https://fredrickmwendwa.vercel.app) · [LinkedIn](https://linkedin.com/in/fredrick-mwendwa) · [GitHub](https://github.com/fredrickmwendwa) · [Email](mailto:fredrickmwendwa77@gmail.com)
+![Portfolio preview](public/og-image.png)
 
-![React](https://img.shields.io/badge/React-18-101614?logo=react&logoColor=61DAFB)
-![Vite](https://img.shields.io/badge/Vite-5-101614?logo=vite&logoColor=FFD62E)
-![JavaScript](https://img.shields.io/badge/JavaScript-ES2022-101614?logo=javascript&logoColor=F7DF1E)
-![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-101614?logo=vercel&logoColor=white)
+## Highlights
 
-<img src="public/og-image.png" alt="Fredrick Mwendwa portfolio preview" width="720" />
-
-</div>
-
----
-
-## Contents
-
-1. [Overview](#overview)
-2. [Features](#features)
-3. [Tech stack](#tech-stack)
-4. [Project structure](#project-structure)
-5. [Getting started](#getting-started)
-6. [Editing content](#editing-content)
-7. [Design system](#design-system)
-8. [SEO and Google Search Console](#seo-and-google-search-console)
-9. [Deployment](#deployment)
-10. [Performance and accessibility](#performance-and-accessibility)
-11. [Troubleshooting](#troubleshooting)
-
----
-
-## Overview
-
-A calm, editorial portfolio built around one message: **I build web applications, front to back.** Large type, generous space, a warm light palette with a single cobalt accent, and an arched portrait as the signature shape. It has one job: help the right person contact me about a full-stack internship or junior software engineering role.
-
-Sections: **Hero · Selected work · About · Toolbox · How I work · Contact**.
-
-## Features
-
-- **One-viewport hero** sized with `100svh`: headline, short intro, two calls to action and an arched portrait with a "open to roles" seal. It works without any animation.
-- **Sticky header that hides on scroll down and returns instantly on scroll up** (desktop). It stays visible while keyboard focus is inside it. On phones it is replaced by a bottom route dock.
-- **Three project case studies** with one layout that alternates sides (problem, role, outcome, stack, live site and source links), all driven by one data file.
-- **Pre-rendered HTML.** The build renders the React app to static HTML, so crawlers read the full page without running JavaScript. React then hydrates it.
-- **Complete SEO setup:** title and description, canonical, Open Graph and Twitter cards, a 1200×630 share image, JSON-LD (`WebSite`, `ProfilePage`, `Person`), `robots.txt`, an auto-dated `sitemap.xml`, favicon set, web manifest, and the Google Search Console verification file.
-- **Cobalt contact section** with an email button, copy-to-clipboard with spoken feedback for screen readers, and LinkedIn and GitHub links.
-- **Accessible by default:** semantic landmarks, a single `h1`, visible focus states, a skip link, 44px touch targets, `prefers-reduced-motion` support.
-- **No UI libraries.** Hand-written CSS with design tokens, plain React, about 51 kB of gzipped JavaScript.
+- **Prerendered React.** The page is rendered to static HTML at build time and hydrated in the browser, so content is visible before any JavaScript runs.
+- **Considered motion.** Masked headline reveal, scroll-triggered section reveals, a reading progress bar and a header that hides on scroll down and returns on scroll up. All of it respects `prefers-reduced-motion`.
+- **Hand-written CSS.** No UI framework. A small set of design tokens, a 12-column grid and fluid type scale.
+- **Mobile first.** A bottom dock navigation replaces the header on small screens.
+- **Accessible by default.** Semantic landmarks, visible focus states, skip link, live-region feedback and AA contrast.
+- **Search ready.** Structured data, social cards, canonical URL, sitemap, robots rules and web manifest.
 
 ## Tech stack
 
-| Layer | Choice |
+| Area | Choice |
 | --- | --- |
-| UI | React 18 (JavaScript, JSX) |
-| Build | Vite 5, with an SSR build used only for pre-rendering |
-| Styling | Plain CSS with custom properties (`src/styles.css`) |
-| Fonts | Bricolage Grotesque, Hanken Grotesk, IBM Plex Mono (Google Fonts) |
-| Hosting | Vercel (static output in `dist/`) |
-
-## Project structure
-
-```
-.
-├── index.html               # SEO metadata, JSON-LD, root element
-├── vercel.json              # Security and cache headers
-├── scripts/
-│   └── prerender.mjs        # Runs after the build: injects rendered HTML, stamps sitemap date
-├── public/                  # Served as-is from the site root
-│   ├── images/              # Portrait and project screenshots
-│   ├── og-image.png         # 1200×630 social share image
-│   ├── favicon.svg / .ico   # Icons (plus 48, 192, 512 px PNGs and apple-touch-icon)
-│   ├── site.webmanifest
-│   ├── robots.txt
-│   ├── sitemap.xml
-│   └── google8c865cb0a4f36a4e.html   # Search Console verification
-└── src/
-    ├── main.jsx             # Hydrates the pre-rendered page (renders from scratch in dev)
-    ├── entry-server.jsx     # Server entry used by the pre-render step
-    ├── App.jsx              # Header, hero, sections, contact, footer
-    ├── data.js              # All editable content
-    └── styles.css           # Design tokens and all styles
-```
+| UI | React 18 |
+| Build tool | Vite 5 |
+| Language | JavaScript (JSX) |
+| Styling | Plain CSS with custom properties |
+| Fonts | Bricolage Grotesque, Hanken Grotesk, IBM Plex Mono |
+| Hosting | Vercel |
 
 ## Getting started
 
-Requires **Node.js 18.18 or newer** (the current LTS is fine) and Git.
+Requires Node.js 18.18 or newer.
 
 ```bash
 git clone https://github.com/fredrickmwendwa/portfolio.git
@@ -95,113 +37,63 @@ npm install
 npm run dev
 ```
 
-Open <http://localhost:5173>. Windows users can run these commands in PowerShell, Windows Terminal or the VS Code terminal.
+The dev server runs at `http://localhost:5173`.
 
 | Command | What it does |
 | --- | --- |
-| `npm run dev` | Starts the dev server with hot reload |
-| `npm run build` | Builds the site, then pre-renders it into `dist/` |
-| `npm run preview` | Serves the production build at <http://localhost:4173> |
+| `npm run dev` | Start the development server with hot reload |
+| `npm run build` | Build, server-render and prerender into `dist/` |
+| `npm run preview` | Serve the production build locally |
 
-> Use `npm run build` followed by `npm run preview` to check the real production output, including the pre-rendered HTML. View the page source in the browser and you will see the full content inside `<div id="root">`.
+## Project structure
 
-## Editing content
+```
+.
+├── index.html            Document head, SEO tags and structured data
+├── vercel.json           Security and cache headers
+├── scripts/
+│   └── prerender.mjs     Injects server-rendered HTML into the build
+├── public/               Icons, social image, robots.txt, sitemap, manifest
+└── src/
+    ├── App.jsx           Page sections and components
+    ├── data.js           All site content (projects, about, tools)
+    ├── styles.css        Design tokens, layout and motion
+    ├── main.jsx          Client entry (hydrates the prerendered page)
+    └── entry-server.jsx  Server entry used at build time
+```
 
-Almost everything lives in **`src/data.js`**. Change the text and the layout updates itself.
+## How the build works
 
-- **Projects:** edit the three entries in `projects` (`name`, `kind`, `stack`, `problem`, `built`, `role`, `outcome`, `image`, `imageAlt`). Add `liveUrl` and/or `sourceUrl`; a button only appears when its URL is set. All three "Live site" buttons currently point to the portfolio itself, so give each project its own `liveUrl` when you deploy it.
-- **About, toolbox, principles:** edit `aboutParagraphs`, `aboutFacts`, `toolbox` and `principles`.
-- **Contact details and site URL:** edit `EMAIL`, `LINKEDIN`, `GITHUB` and `SITE_URL` at the top of the file.
-- **Hero copy:** edit `Hero` in `src/App.jsx`.
+1. `vite build` produces the client bundle.
+2. `vite build --ssr` produces a small server bundle of the same app.
+3. `scripts/prerender.mjs` renders the app to a string, writes it into `dist/index.html` and updates the sitemap date.
 
-**Images**
+The result is plain static files, so the site can be hosted anywhere.
 
-1. Put files in `public/images/` (for example `project-1.jpg`).
-2. Reference them from `data.js` with a path starting with `/` (for example `'/images/project-1.jpg'`).
-3. Keep project screenshots around 1600 px wide and under 300 kB (JPG or WebP). Give every image a descriptive `imageAlt`.
+## Content
 
-## Design system
+Everything on the page is driven from `src/data.js`: projects, about text, tools and working principles. Layout and styling live separately, so content changes do not touch components.
 
-All tokens are CSS custom properties at the top of `src/styles.css`.
+## Performance
 
-| Token | Value | Use |
-| --- | --- | --- |
-| `--bone` | `#F1EEE8` | Page ground |
-| `--paper` | `#FAF8F4` | Raised surfaces and alternate bands |
-| `--sand` | `#E6E1D6` | Image frames and tags |
-| `--ink` | `#12110F` | Text and dark sections |
-| `--graphite` | `#5A5750` | Secondary text |
-| `--hair` | `#D8D3C9` | Borders |
-| `--cobalt` | `#2338E6` | The one accent, also the contact section background |
-| `--cobalt-night` | `#A3AEFF` | The accent on dark backgrounds |
-| `--mist` / `--mist-2` | `#EDE9E1` / `#A8A399` | Text on dark backgrounds |
-
-Typography: Bricolage Grotesque for display, Hanken Grotesk for body, IBM Plex Mono for routes and metadata. Layout is a 12-column grid on desktop that collapses below 900 px, with a bottom pill dock replacing the nav links below 640 px.
-
-## SEO and Google Search Console
-
-Everything below is already in the repository. The production URL is `https://fredrickmwendwa.vercel.app`.
-
-**What is configured**
-
-- `index.html`: title, description, canonical, robots directives, Open Graph, Twitter cards, icons, manifest and JSON-LD.
-- `public/robots.txt` allows everything and points to the sitemap.
-- `public/sitemap.xml` lists the page and portrait; the build stamps today's date into `<lastmod>`.
-- Pre-rendered HTML, so the content is indexable without JavaScript.
-
-**If you change the domain** (for example to a custom domain), replace `https://fredrickmwendwa.vercel.app` in `index.html`, `public/robots.txt`, `public/sitemap.xml`, `public/og-image.png` (the URL is printed on it) and `SITE_URL` in `src/data.js`.
-
-**Submit the site to Google**
-
-1. Go to [Google Search Console](https://search.google.com/search-console) and choose **Add property → URL prefix**, then enter `https://fredrickmwendwa.vercel.app/`.
-2. Choose **HTML file** verification. The file `google8c865cb0a4f36a4e.html` is already deployed from `public/`. Open `https://fredrickmwendwa.vercel.app/google8c865cb0a4f36a4e.html` to confirm it loads, then click **Verify**. If Google gives you a different file name, add that file to `public/` with the exact content it shows, deploy, then verify.
-3. Open **Sitemaps**, enter `sitemap.xml` and click **Submit**.
-4. Open **URL Inspection**, paste the homepage URL and click **Request indexing**.
-5. Come back after a few days. Check **Pages** for indexing status and **Performance** for queries. Do not delete the verification file, or the property can lose verification.
-
-**Check the result**
-
-- [Rich Results Test](https://search.google.com/test/rich-results) for the JSON-LD.
-- [PageSpeed Insights](https://pagespeed.web.dev) for Core Web Vitals.
-- Paste the URL into a LinkedIn post draft or the [Facebook Sharing Debugger](https://developers.facebook.com/tools/debug/) to confirm the share image.
+- Static HTML delivered first, JavaScript hydrates afterwards
+- No runtime dependencies beyond React
+- Immutable caching for hashed assets
+- Fonts loaded with `display=swap`
+- Images lazy loaded below the fold
 
 ## Deployment
 
-Hosted on **Vercel** and redeployed automatically on every push to `main`.
+The project deploys to Vercel with no configuration. Import the repository, keep the default Vite settings and Vercel runs `npm run build` and serves `dist/`.
 
-1. Push the repository to GitHub.
-2. In Vercel choose **Add New → Project**, import the repository and click **Deploy**.
-3. Vercel detects Vite. The defaults are correct: build command `npm run build`, output directory `dist`.
+## Author
 
-`vercel.json` adds security headers (HSTS, `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`, `Permissions-Policy`) and long-lived caching for hashed assets.
+**Fredrick Mwendwa**, full-stack developer, Nairobi.
 
-To update the site: edit, then run
+- Email: [fredrickmwendwa77@gmail.com](mailto:fredrickmwendwa77@gmail.com)
+- LinkedIn: [fredrick-mwendwa](https://linkedin.com/in/fredrick-mwendwa)
+- GitHub: [fredrickmwendwa](https://github.com/fredrickmwendwa)
 
-```bash
-git add .
-git commit -m "Describe the change"
-git push
-```
+## License
 
-## Performance and accessibility
-
-- Pre-rendered HTML and about 51 kB gzipped JavaScript, with no animation or UI libraries.
-- Images below the fold use `loading="lazy"` and `decoding="async"`, and image frames reserve their space with `aspect-ratio` to avoid layout shift.
-- Motion is limited to short entrance and hover transitions, all disabled under `prefers-reduced-motion`.
-- Colour pairs meet WCAG AA for text; the cobalt accent has a contrast ratio above 6:1 on the bone background.
-- Keyboard: skip link, visible focus rings, the hidden header reappears when focus enters it.
-
-## Troubleshooting
-
-- **`npm` is not recognised on Windows:** reinstall Node.js, then open a new terminal window.
-- **A project image does not show:** check the file is in `public/images/` and the path in `data.js` starts with `/images/` and matches the file name and case exactly.
-- **Build fails with an SSR error:** code that touches `window` or `document` must run inside `useEffect`, because the page is rendered on the server during the build.
-- **Google still shows an old title or image:** use **URL Inspection → Request indexing**; changes can take days to appear.
-
----
-
-<div align="center">
-
-Designed and built by **Fredrick Mwendwa** · Nairobi, Kenya · © 2026
-
-</div>
+The source is shared for reference and learning. The design, copy and imagery are personal and all rights are reserved, so please do not republish this site as your own.

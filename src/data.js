@@ -68,8 +68,8 @@ export const aboutFacts = [
 
 export const toolbox = [
   { title: 'Interfaces', text: 'What people see, tap and use.', items: ['React', 'JavaScript', 'HTML', 'CSS'] },
-  { title: 'Back end', text: 'The logic, accounts and rules behind every screen.', items: ['Python', 'Django', 'Django REST Framework', 'PHP', 'Laravel'] },
-  { title: 'Data', text: 'Where everything is stored and found.', items: ['PostgreSQL', 'MySQL'] },
+  { title: 'Back end', text: 'The logic, accounts and rules behind every screen.', items: ['Python', 'Django', 'Django REST Framework'] },
+  { title: 'Data', text: 'Where everything is stored and found.', items: ['PostgreSQL'] },
 ];
 
 export const principles = [

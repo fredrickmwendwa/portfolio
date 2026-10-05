@@ -4,12 +4,45 @@ import {
   projects, aboutParagraphs, aboutFacts, toolbox, principles,
 } from './data.js';
 
+/* ───────── scroll reveal: adds .is-in when [data-reveal] elements enter the viewport ───────── */
+
+function useReveal() {
+  useEffect(() => {
+    clearTimeout(window.__revealFallback);
+    const els = Array.from(document.querySelectorAll('[data-reveal]'));
+    if (!('IntersectionObserver' in window)) {
+      els.forEach((el) => el.classList.add('is-in'));
+      return undefined;
+    }
+    // Clipped elements report no area, so observe their parent instead.
+    const map = new Map();
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            (map.get(entry.target) || entry.target).classList.add('is-in');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -6% 0px' },
+    );
+    els.forEach((el) => {
+      const t = el.dataset.reveal === 'img' ? el.parentElement : el;
+      map.set(t, el);
+      io.observe(t);
+    });
+    return () => io.disconnect();
+  }, []);
+}
+
 /* ───────── header: fixed, hides on scroll down, returns on scroll up (desktop) ───────── */
 
 function SiteHeader() {
   const [hidden, setHidden] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const ref = useRef(null);
+  const bar = useRef(null);
 
   useEffect(() => {
     let lastY = window.scrollY;
@@ -19,6 +52,8 @@ function SiteHeader() {
       const y = Math.max(window.scrollY, 0);
       const delta = y - lastY;
       setScrolled(y > 8);
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      if (bar.current) bar.current.style.transform = `scaleX(${max > 0 ? Math.min(y / max, 1) : 0})`;
       if (y < 96) {
         setHidden(false);
       } else if (delta > 6) {
@@ -48,7 +83,7 @@ function SiteHeader() {
       className={`site-header${hidden ? ' is-hidden' : ''}${scrolled ? ' is-scrolled' : ''}`}
       onFocusCapture={() => setHidden(false)}
     >
-      <div className="wrap">
+      <div className="wrap header-in">
         <nav className="nav" aria-label="Primary">
           <a className="logo" href="#top" aria-label="Fredrick Mwendwa, home"><b>FM</b><span>Fredrick Mwendwa</span></a>
           <div className="links">
@@ -60,6 +95,7 @@ function SiteHeader() {
           </div>
         </nav>
       </div>
+      <div className="progress" ref={bar} aria-hidden="true" />
     </div>
   );
 }
@@ -88,7 +124,11 @@ function Hero() {
       <div className="wrap hero-main g12" style={{ width: '100%' }}>
         <div className="hero-l">
           <p className="mono eyebrow" data-rise style={{ animationDelay: '.05s' }}><i className="pip" />Full-stack developer · Nairobi, Kenya</p>
-          <h1 className="h1" data-rise style={{ animationDelay: '.12s' }}>I build web applications, <span className="acc">front to&nbsp;back.</span></h1>
+          <h1 className="h1" aria-label="I build web applications, front to back.">
+            <span className="ln" style={{ '--i': 0 }} aria-hidden="true"><span>I build web</span></span>
+            <span className="ln" style={{ '--i': 1 }} aria-hidden="true"><span>applications,</span></span>
+            <span className="ln" style={{ '--i': 2 }} aria-hidden="true"><span className="acc">front to&nbsp;back.</span></span>
+          </h1>
           <p className="lead" data-rise style={{ animationDelay: '.2s' }}>Hi, I'm Fredrick. I build the interface, the logic and the data behind it, so what I deliver is a complete, dependable product, not half of one.</p>
           <div className="cta" data-rise style={{ animationDelay: '.28s' }}>
             <a className="btn solid" href="#work">View selected work <span className="ar" aria-hidden="true">↓</span></a>
@@ -115,7 +155,7 @@ function Hero() {
       <div className="wrap" style={{ width: '100%' }}>
         <div className="hero-foot mono">
           <span className="avail"><i className="pip" />Available for internship / junior roles</span>
-          <span className="stackmini">React · JavaScript · Python · Django · Laravel · PostgreSQL</span>
+          <span className="stackmini">React · JavaScript · Python · Django · PostgreSQL</span>
         </div>
       </div>
     </header>
@@ -130,7 +170,7 @@ function Case({ p, index, side, paper }) {
     <div className={`case-band${paper ? ' paper' : ''}`}>
       <div className="wrap">
         <article className={`case ${side} g12`} aria-labelledby={p.id}>
-          <div className="case-img">
+          <div className="case-img" data-reveal="img">
             <div className="slot">
               {p.image ? (
                 <>
@@ -142,7 +182,7 @@ function Case({ p, index, side, paper }) {
               )}
             </div>
           </div>
-          <div className="case-meta">
+          <div className="case-meta" data-reveal style={{ '--d': '.18s' }}>
             <h3 id={p.id} className="case-name">{p.name}</h3>
             <p className="case-kind">{p.kind}</p>
             <p className="case-desc">{p.desc}</p>
@@ -178,11 +218,11 @@ function Work() {
     <section id="work" className="sec" style={{ paddingBottom: 0 }} aria-labelledby="work-h">
       <div className="wrap">
         <div className="g12 sec-head">
-          <div style={{ gridColumn: '1 / span 9' }}>
+          <div style={{ gridColumn: '1 / span 9' }} data-reveal>
             <p className="mono kicker">Selected work</p>
             <h2 id="work-h" className="h2" style={{ marginTop: 22 }}>Projects I've built.</h2>
           </div>
-          <p className="count" style={{ gridColumn: '10 / span 3' }} aria-hidden="true">({String(projects.length).padStart(2, '0')})</p>
+          <p className="count" style={{ gridColumn: '10 / span 3', '--d': '.15s' }} data-reveal aria-hidden="true">({String(projects.length).padStart(2, '0')})</p>
         </div>
       </div>
       {projects.map((p, i) => (
@@ -199,11 +239,11 @@ function About() {
     <section id="about" className="sec" aria-labelledby="about-h">
       <div className="wrap">
         <div className="g12" style={{ rowGap: 48, alignItems: 'start' }}>
-          <div className="about-statement">
+          <div className="about-statement" data-reveal>
             <p className="mono kicker">About</p>
             <h2 id="about-h" className="h2" style={{ marginTop: 22 }}>Software that feels simple to use and is solid underneath.</h2>
           </div>
-          <div className="about-body">
+          <div className="about-body" data-reveal style={{ '--d': '.12s' }}>
             {aboutParagraphs.map((t) => <p key={t}>{t}</p>)}
             <dl className="about-facts">
               {aboutFacts.map(([k, v]) => (
@@ -224,11 +264,11 @@ function Toolbox() {
   return (
     <section id="toolbox" className="dark sec" aria-labelledby="tool-h">
       <div className="wrap">
-        <p className="mono kicker">Toolbox</p>
-        <h2 id="tool-h" className="h2" style={{ marginTop: 22, maxWidth: '12em' }}>The tools I build with.</h2>
+        <p className="mono kicker" data-reveal>Toolbox</p>
+        <h2 id="tool-h" className="h2" style={{ marginTop: 22, maxWidth: '12em' }} data-reveal>The tools I build with.</h2>
         <div className="tool-cols">
-          {toolbox.map((c) => (
-            <div className="tool" key={c.title}>
+          {toolbox.map((c, ci) => (
+            <div className="tool" key={c.title} data-reveal style={{ '--d': `${ci * 0.12}s` }}>
               <h3>{c.title}</h3>
               <p>{c.text}</p>
               <ul>{c.items.map((i) => <li key={i}>{i}</li>)}</ul>
@@ -247,13 +287,13 @@ function HowIWork() {
     <section className="sec" aria-labelledby="how-h">
       <div className="wrap">
         <div className="g12" style={{ rowGap: 40, alignItems: 'start' }}>
-          <div style={{ gridColumn: '1 / span 4' }}>
+          <div style={{ gridColumn: '1 / span 4' }} data-reveal>
             <p className="mono kicker">How I work</p>
             <h2 id="how-h" className="h2" style={{ marginTop: 22 }}>Principles I build by.</h2>
           </div>
           <ol style={{ gridColumn: '6 / span 7', listStyle: 'none' }}>
-            {principles.map(([n, title, text]) => (
-              <li className="how-row" key={n}><span className="n">{n}</span><h3>{title}</h3><p>{text}</p></li>
+            {principles.map(([n, title, text], i) => (
+              <li className="how-row" key={n} data-reveal="row" style={{ '--d': `${i * 0.08}s` }}><span className="n">{n}</span><h3>{title}</h3><p>{text}</p></li>
             ))}
           </ol>
         </div>
@@ -285,19 +325,19 @@ function Contact() {
       <div className="wrap">
         <div className="g12 cta-grid">
           <div className="cta-l">
-            <p className="pill mono"><i />Open to internships &amp; junior roles</p>
-            <h2 id="contact-h" className="cta-h">Let's build something worth shipping.</h2>
-            <p className="lead">Full-stack internships and junior software engineering roles are what I'm after. Send a note; I reply quickly.</p>
-            <div className="cta-actions">
+            <p className="pill mono" data-reveal><i />Open to internships &amp; junior roles</p>
+            <h2 id="contact-h" className="cta-h" data-reveal style={{ '--d': '.1s' }}>Let's build something worth shipping.</h2>
+            <p className="lead" data-reveal style={{ '--d': '.2s' }}>Full-stack internships and junior software engineering roles are what I'm after. Send a note; I reply quickly.</p>
+            <div className="cta-actions" data-reveal style={{ '--d': '.3s' }}>
               <a className="btn paper" href={`mailto:${EMAIL}?subject=Hello%20Fredrick`}>Email me <span className="ar" aria-hidden="true">→</span></a>
               <button className="btn out" type="button" onClick={copy} data-copied={copied ? 'true' : 'false'}>{copied ? 'Copied ✓' : 'Copy email'}</button>
               <span className="sr" role="status" aria-live="polite">{copied ? 'Email address copied to clipboard' : ''}</span>
             </div>
           </div>
           <ul className="cta-r">
-            <li><a href={`mailto:${EMAIL}`}><span className="k mono">Email</span><span className="v">{EMAIL}</span><span className="go" aria-hidden="true">↗</span></a></li>
-            <li><a href={LINKEDIN} target="_blank" rel="noopener noreferrer"><span className="k mono">LinkedIn</span><span className="v">/in/fredrick-mwendwa</span><span className="go" aria-hidden="true">↗</span></a></li>
-            <li><a href={GITHUB} target="_blank" rel="noopener noreferrer"><span className="k mono">GitHub</span><span className="v">/fredrickmwendwa</span><span className="go" aria-hidden="true">↗</span></a></li>
+            <li data-reveal style={{ '--d': '.2s' }}><a href={`mailto:${EMAIL}`}><span className="k mono">Email</span><span className="v">{EMAIL}</span><span className="go" aria-hidden="true">↗</span></a></li>
+            <li data-reveal style={{ '--d': '.3s' }}><a href={LINKEDIN} target="_blank" rel="noopener noreferrer"><span className="k mono">LinkedIn</span><span className="v">/in/fredrick-mwendwa</span><span className="go" aria-hidden="true">↗</span></a></li>
+            <li data-reveal style={{ '--d': '.4s' }}><a href={GITHUB} target="_blank" rel="noopener noreferrer"><span className="k mono">GitHub</span><span className="v">/fredrickmwendwa</span><span className="go" aria-hidden="true">↗</span></a></li>
           </ul>
         </div>
       </div>
@@ -315,7 +355,7 @@ function Footer() {
             <a href={LINKEDIN} rel="noopener noreferrer">LinkedIn</a> · <a href={GITHUB} rel="noopener noreferrer">GitHub</a> · <a href={`mailto:${EMAIL}`}>Email</a> · © 2026
           </span>
         </div>
-        <p className="wordmark" aria-hidden="true">Fredrick Mwendwa</p>
+        <p className="wordmark" aria-hidden="true" data-reveal="mark">Fredrick Mwendwa</p>
       </div>
     </footer>
   );
@@ -324,6 +364,7 @@ function Footer() {
 /* ───────── app ───────── */
 
 export default function App() {
+  useReveal();
   return (
     <div id="top">
       <a className="sr" href="#work">Skip to selected work</a>
