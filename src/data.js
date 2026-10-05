@@ -64,6 +64,9 @@ export const projects = [
   },
 ];
 
+// Optional photo for the About section, for example '/images/about.jpg'. Leave empty to hide it.
+export const aboutImage = '';
+
 export const aboutParagraphs = [
   "I'm Fredrick, a full-stack developer based in Nairobi. I like work where the interface, the logic and the data all pull in the same direction.",
   'I care about the details people notice, like clear states, quick pages and layouts that hold up on a phone, and the ones they never see, like clean structure, sensible naming and code the next person can read.',

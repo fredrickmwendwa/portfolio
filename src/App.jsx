@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import {
   EMAIL, LINKEDIN, GITHUB, CV_URL,
-  projects, aboutParagraphs, aboutFacts, toolbox, principles,
+  projects, aboutImage, aboutParagraphs, aboutFacts, toolbox, principles,
 } from './data.js';
 
 /* ───────── scroll reveal: adds .is-in when [data-reveal] elements enter the viewport ───────── */
@@ -162,7 +162,7 @@ function SiteHeader({ active }) {
             {[['work', 'Work'], ['about', 'About'], ['toolbox', 'Toolbox'], ['contact', 'Contact']].map(([id, label]) => (
               <a key={id} href={`#${id}`} aria-current={active === id ? 'true' : undefined}>{label}</a>
             ))}
-            <a href={CV_URL} className="cv" download="Fredrick_Mwendwa_CV.pdf">CV <span aria-hidden="true">↓</span></a>
+            <a href={CV_URL} className="btn ghost cv" download="Fredrick_Mwendwa_CV.pdf" data-magnetic>Download CV <span className="ar" aria-hidden="true">↓</span></a>
             <ThemeToggle />
             <a href="#contact" className="btn solid" data-magnetic>Let's talk</a>
           </div>
@@ -274,17 +274,22 @@ function Case({ p, index }) {
             </div>
             <div className="m-body" data-reveal style={{ '--d': '.28s' }}>
               {p.highlight && <p className="highlight"><i aria-hidden="true" />{p.highlight}</p>}
-              {p.covers && (
-                <div className="covers">
-                  <p className="mono">What it covers</p>
-                  <ol>{p.covers.map((c, ci) => <li key={c}><span>{String(ci + 1).padStart(2, '0')}</span>{c}</li>)}</ol>
+              <details className="more">
+                <summary><span>Project details</span><i aria-hidden="true" /></summary>
+                <div className="more-in">
+                  {p.covers && (
+                    <div className="covers">
+                      <p className="mono">What it covers</p>
+                      <ol>{p.covers.map((c, ci) => <li key={c}><span>{String(ci + 1).padStart(2, '0')}</span>{c}</li>)}</ol>
+                    </div>
+                  )}
+                  <dl className="facts">
+                    <div><dt>PROBLEM</dt><dd>{p.problem}</dd></div>
+                    <div><dt>ROLE</dt><dd>{p.role}</dd></div>
+                    <div><dt>OUTCOME</dt><dd>{p.outcome}</dd></div>
+                  </dl>
                 </div>
-              )}
-              <dl className="facts">
-                <div><dt>PROBLEM</dt><dd>{p.problem}</dd></div>
-                <div><dt>ROLE</dt><dd>{p.role}</dd></div>
-                <div><dt>OUTCOME</dt><dd>{p.outcome}</dd></div>
-              </dl>
+              </details>
               {(p.liveUrl || p.sourceUrl) && (
                 <div className="case-links">
                   {p.liveUrl && (
@@ -384,6 +389,11 @@ function About() {
             <h2 id="about-h" className="h2" style={{ marginTop: 22 }}>Software that feels simple to use and is solid underneath.</h2>
           </div>
           <div className="about-body" data-reveal style={{ '--d': '.12s' }}>
+            {aboutImage && (
+              <figure className="about-photo" data-reveal="img">
+                <img src={aboutImage} alt="Fredrick Mwendwa at work" loading="lazy" decoding="async" />
+              </figure>
+            )}
             {aboutParagraphs.map((t) => <p key={t}>{t}</p>)}
             <dl className="about-facts">
               {aboutFacts.map(([k, v]) => (
