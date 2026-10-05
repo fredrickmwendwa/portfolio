@@ -35,18 +35,18 @@
 
 ## Overview
 
-The site presents one idea: every page is read like a request travelling **interface → API → data**. Section labels are routes (`GET /work`, `POST /contact`), the stack is shown as three layers, and the journey is the same path taken over time. It has one job: help the right person contact me about a full-stack internship or junior software engineering role.
+A calm, editorial portfolio built around one message: **I build web applications, front to back.** Large type, generous space, a warm light palette with a single cobalt accent, and an arched portrait as the signature shape. It has one job: help the right person contact me about a full-stack internship or junior software engineering role.
 
-Sections: **Hero · Selected work · Journey · About · Stack · How I work · Contact**.
+Sections: **Hero · Selected work · About · Toolbox · How I work · Contact**.
 
 ## Features
 
-- **One-viewport hero** sized with `100svh`, with an interface / API / data visual that works without animation.
+- **One-viewport hero** sized with `100svh`: headline, short intro, two calls to action and an arched portrait with a "open to roles" seal. It works without any animation.
 - **Sticky header that hides on scroll down and returns instantly on scroll up** (desktop). It stays visible while keyboard focus is inside it. On phones it is replaced by a bottom route dock.
-- **Three consistent project case studies** (problem, built, role, outcome, stack, links), all driven by one data file.
+- **Three project case studies** with one layout that alternates sides (problem, role, outcome, stack, live site and source links), all driven by one data file.
 - **Pre-rendered HTML.** The build renders the React app to static HTML, so crawlers read the full page without running JavaScript. React then hydrates it.
 - **Complete SEO setup:** title and description, canonical, Open Graph and Twitter cards, a 1200×630 share image, JSON-LD (`WebSite`, `ProfilePage`, `Person`), `robots.txt`, an auto-dated `sitemap.xml`, favicon set, web manifest, and the Google Search Console verification file.
-- **Contact section** with an email button, copy-to-clipboard with spoken feedback for screen readers, and LinkedIn and GitHub rows.
+- **Cobalt contact section** with an email button, copy-to-clipboard with spoken feedback for screen readers, and LinkedIn and GitHub links.
 - **Accessible by default:** semantic landmarks, a single `h1`, visible focus states, a skip link, 44px touch targets, `prefers-reduced-motion` support.
 - **No UI libraries.** Hand-written CSS with design tokens, plain React, about 51 kB of gzipped JavaScript.
 
@@ -109,10 +109,10 @@ Open <http://localhost:5173>. Windows users can run these commands in PowerShell
 
 Almost everything lives in **`src/data.js`**. Change the text and the layout updates itself.
 
-- **Projects:** edit the three entries in `projects` (`name`, `kind`, `stack`, `problem`, `built`, `role`, `outcome`, `image`, `imageAlt`). Add `liveUrl` and/or `sourceUrl`; a link only appears when its URL is set.
-- **Journey, stack, principles:** edit `journey`, `layers` and `principles`.
+- **Projects:** edit the three entries in `projects` (`name`, `kind`, `stack`, `problem`, `built`, `role`, `outcome`, `image`, `imageAlt`). Add `liveUrl` and/or `sourceUrl`; a button only appears when its URL is set. All three "Live site" buttons currently point to the portfolio itself, so give each project its own `liveUrl` when you deploy it.
+- **About, toolbox, principles:** edit `aboutParagraphs`, `aboutFacts`, `toolbox` and `principles`.
 - **Contact details and site URL:** edit `EMAIL`, `LINKEDIN`, `GITHUB` and `SITE_URL` at the top of the file.
-- **About text and hero copy:** edit `src/App.jsx` (`About` and `Hero`).
+- **Hero copy:** edit `Hero` in `src/App.jsx`.
 
 **Images**
 
@@ -126,16 +126,17 @@ All tokens are CSS custom properties at the top of `src/styles.css`.
 
 | Token | Value | Use |
 | --- | --- | --- |
-| `--lichen` | `#ECEEE9` | Page ground |
-| `--paper` | `#F6F7F4` | Raised surfaces |
-| `--ink` | `#101614` | Text |
-| `--graphite` | `#4B5651` | Secondary text |
-| `--hair` | `#CDD2CB` | Borders |
-| `--signal` / `--signal-text` | `#E4572E` / `#B63A14` | One accent: marks and rules / accessible text |
-| `--night` / `--signal-night` | `#0F1A17` / `#FF7A4D` | Dark sections and the accent on dark |
-| `--live` | `#2F7D4F` | Availability dot |
+| `--bone` | `#F1EEE8` | Page ground |
+| `--paper` | `#FAF8F4` | Raised surfaces and alternate bands |
+| `--sand` | `#E6E1D6` | Image frames and tags |
+| `--ink` | `#12110F` | Text and dark sections |
+| `--graphite` | `#5A5750` | Secondary text |
+| `--hair` | `#D8D3C9` | Borders |
+| `--cobalt` | `#2338E6` | The one accent, also the contact section background |
+| `--cobalt-night` | `#A3AEFF` | The accent on dark backgrounds |
+| `--mist` / `--mist-2` | `#EDE9E1` / `#A8A399` | Text on dark backgrounds |
 
-Typography: Bricolage Grotesque for display, Hanken Grotesk for body, IBM Plex Mono for routes and metadata. Layout is a 12-column grid on desktop that collapses below 900 px, with a bottom dock replacing the nav below 640 px.
+Typography: Bricolage Grotesque for display, Hanken Grotesk for body, IBM Plex Mono for routes and metadata. Layout is a 12-column grid on desktop that collapses below 900 px, with a bottom pill dock replacing the nav links below 640 px.
 
 ## SEO and Google Search Console
 
@@ -187,7 +188,7 @@ git push
 - Pre-rendered HTML and about 51 kB gzipped JavaScript, with no animation or UI libraries.
 - Images below the fold use `loading="lazy"` and `decoding="async"`, and image frames reserve their space with `aspect-ratio` to avoid layout shift.
 - Motion is limited to short entrance and hover transitions, all disabled under `prefers-reduced-motion`.
-- Colour pairs meet WCAG AA for text; the orange accent on light backgrounds uses the darker `--signal-text` value.
+- Colour pairs meet WCAG AA for text; the cobalt accent has a contrast ratio above 6:1 on the bone background.
 - Keyboard: skip link, visible focus rings, the hidden header reappears when focus enters it.
 
 ## Troubleshooting
